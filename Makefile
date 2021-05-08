@@ -1,2 +1,2 @@
-all: tsconfig.json $(wildcard src/*.ts)
+all: tsconfig.json $(wildcard ts/*.ts)
 	tsc

@@ -2,12 +2,21 @@
   "compilerOptions": {
     "target": "ES2020",
     "module": "ES2020",
-    "noImplicitAny": true,
+    "outDir": "js",
     "sourceMap": true,
-    "outDir": "js"
+
+    "alwaysStrict": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "strictFunctionTypes": true,
+    "strictNullChecks": true,
+    "strictPropertyInitialization": true
   },
   "files": [
-    "src/tower.ts",
-    "src/tower_map.ts"
+    "ts/tower.ts",
+    "ts/tower_map.ts"
   ]
 }
