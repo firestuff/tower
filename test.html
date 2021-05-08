@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Test</title>
+  <style>
+
+:root {
+  --map-width: 100vmin;
+  --map-height: 100vmin;
+  --map-width-tiles: 20;
+  --map-height-tiles: 20;
+}
+
+body {
+  margin: 0;
+  background-color: #000000;
+}
+
+div {
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+.map {
+  width: var(--map-width);
+  height: var(--map-height);
+  background-image: url('land1.svg');
+  background-size: 100% 100%;
+  display: grid;
+  grid-template-columns: repeat(var(--map-width-tiles), 1fr);
+  grid-template-rows: repeat(var(--map-height-tiles), 1fr);
+}
+
+.road-tb {
+  background-image: url('road1-tb.svg');
+  grid-column-end: span 2;
+  grid-row-end: span 3;
+}
+
+.road-lr {
+  background-image: url('road1-lr.svg');
+  grid-column-end: span 3;
+  grid-row-end: span 2;
+}
+
+.road-br {
+  background-image: url('road1-br.svg');
+  background-position: bottom right;
+  grid-column-end: span 3;
+  grid-row-end: span 3;
+}
+
+.road-bl {
+  background-image: url('road1-bl.svg');
+  background-position: bottom left;
+  grid-column-end: span 3;
+  grid-row-end: span 3;
+}
+
+.road-tr {
+  background-image: url('road1-tr.svg');
+  background-position: top right;
+  grid-column-end: span 3;
+  grid-row-end: span 3;
+}
+
+.road-tl {
+  background-image: url('road1-tl.svg');
+  background-position: top left;
+  grid-column-end: span 3;
+  grid-row-end: span 3;
+}
+
+.road-blr {
+  background-image: url('road1-blr.svg');
+  background-position: bottom;
+  grid-column-end: span 4;
+  grid-row-end: span 3;
+}
+
+.road-tlr {
+  background-image: url('road1-tlr.svg');
+  background-position: top;
+  grid-column-end: span 4;
+  grid-row-end: span 3;
+}
+
+.road-ltb {
+  background-image: url('road1-ltb.svg');
+  background-position: left;
+  grid-column-end: span 3;
+  grid-row-end: span 4;
+}
+
+.road-rtb {
+  background-image: url('road1-rtb.svg');
+  background-position: right;
+  grid-column-end: span 3;
+  grid-row-end: span 4;
+  z-index: 1;
+}
+
+.road-tblr {
+  background-image: url('road1-tblr.svg');
+  background-position: center;
+  grid-column-end: span 4;
+  grid-row-end: span 4;
+}
+
+.empty {
+  background-image: url('empty1.svg');
+  background-position: center;
+  background-size: 80%;
+  grid-column-end: span 2;
+  grid-row-end: span 1;
+}
+
+  </style>
+</head>
+
+<body>
+
+<div class="map"></div>
+
+<script>
+const map = `
+.||.................
+.||.................
+.||.................
+.++..........++++---
+.+++---+++...++++---
+.+++---+++....++....
+........++....++....
+........||....+++---
+......oo||....+++---
+........||....++oo..
+......oo++....++....
+.+++---+++...++++...
+.+++---+++...++++...
+.++...........++....
+.||.................
+.||.................
+.||.................
+.++.................
+++++---.............
+++++---.............
+`;
+
+const shapes = [
+  [[
+    '||',
+    '||',
+    '||',
+  ], 'road-tb'],
+  [[
+    '---',
+    '---',
+  ], 'road-lr'],
+  [[
+    '.++.',
+    '++++',
+    '++++',
+    '.++.',
+  ], 'road-tblr'],
+  [[
+    '.++.',
+    '++++',
+    '++++',
+  ], 'road-tlr'],
+  [[
+    '++++',
+    '++++',
+    '.++.',
+  ], 'road-blr'],
+  [[
+    '.++',
+    '+++',
+    '+++',
+    '.++',
+  ], 'road-ltb'],
+  [[
+    '++.',
+    '+++',
+    '+++',
+    '++.',
+  ], 'road-rtb'],
+  [[
+    '.++',
+    '+++',
+    '+++',
+  ], 'road-tl'],
+  [[
+    '++.',
+    '+++',
+    '+++',
+  ], 'road-tr'],
+  [[
+    '+++',
+    '+++',
+    '.++',
+  ], 'road-bl'],
+  [[
+    '+++',
+    '+++',
+    '++.',
+  ], 'road-br'],
+  [[
+    'oo',
+  ], 'empty'],
+];
+
+function render_map(map, prnt) {
+  const grid = [];
+  const drawn = [];
+
+  for (const row of map.trim().split('\n')) {
+    grid.push(row.split(''));
+    drawn.push(Array(row.length).fill(' '));
+  }
+
+  console.log(grid);
+
+  for (let y = 0; y < grid.length; y++) {
+    let row = grid[y];
+
+    for (let x = 0; x < row.length; x++) {
+      for (const [shape, tile] of shapes) {
+        if (match_shape(shape, x, y, grid, drawn)) {
+          add_tile(tile, x, y, prnt);
+          mark_drawn(shape, x, y, drawn);
+          break;
+        }
+      }
+    }
+  }
+  console.log(drawn);
+};
+
+function add_tile(name, x, y, prnt) {
+  const elem = document.createElement('div');
+  prnt.appendChild(elem);
+  elem.classList.add(name);
+  elem.style.gridColumnStart = x + 1;
+  elem.style.gridRowStart = y + 1;
+}
+
+function mark_drawn(shape, x, y, drawn) {
+  for (let yi = 0; yi < shape.length; yi++) {
+    const row = shape[yi];
+    for (let xi = 0; xi < row.length; xi++) {
+      const cell = row[xi];
+      if (cell == '.') {
+        continue;
+      }
+      drawn[y+yi][x+xi] = cell;
+    }
+  }
+}
+
+function match_shape(shape, x, y, grid, drawn) {
+  for (let yi = 0; yi < shape.length; yi++) {
+    const row = shape[yi];
+    for (let xi = 0; xi < row.length; xi++) {
+      const cell = row[xi];
+      if (cell == '.') {
+        continue;
+      }
+      if (grid_val(x+xi, y+yi, grid) != cell) {
+        return false;
+      }
+      if (drawn[y+yi][x+xi] != ' ') {
+        return false;
+      }
+    }
+  }
+  return true;
+}
+
+function grid_val(x, y, grid) {
+  if (y < 0 || y >= grid.length) {
+    return null;
+  }
+  const row = grid[y];
+  if (x < 0 || x >= row.length) {
+    return null;
+  }
+  return row[x];
+}
+
+render_map(map, document.getElementsByClassName('map')[0]);
+
+</script>
+
+</body>
+
+</html>
