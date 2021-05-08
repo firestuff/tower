@@ -11,18 +11,25 @@ var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (
     }
     return privateMap.get(receiver);
 };
-var _prnt;
+var _prnt, _tileset;
 export class TowerMap {
     constructor(prnt) {
         _prnt.set(this, void 0);
+        _tileset.set(this, void 0);
         __classPrivateFieldSet(this, _prnt, prnt);
         __classPrivateFieldGet(this, _prnt).style.display = 'grid';
     }
-    draw() {
-        __classPrivateFieldGet(this, _prnt).style.backgroundImage = 'url("images/land1.svg")';
-        __classPrivateFieldGet(this, _prnt).style.gridTemplateColumns = 'repeat(20, 1ft)';
-        __classPrivateFieldGet(this, _prnt).style.gridTemplateRows = 'repeat(20, 1ft)';
+    set_size(x, y) {
+        __classPrivateFieldGet(this, _prnt).style.gridTemplateColumns = `repeat(${x}, 1fr)`;
+        __classPrivateFieldGet(this, _prnt).style.gridTemplateRows = `repeat(${y}, 1fr)`;
+    }
+    set_tileset(set) {
+        __classPrivateFieldSet(this, _tileset, set);
+        __classPrivateFieldGet(this, _prnt).style.backgroundImage = this.get_url('land');
+    }
+    get_url(tile) {
+        return `url("images/${__classPrivateFieldGet(this, _tileset)}/${tile}.svg")`;
     }
 }
-_prnt = new WeakMap();
+_prnt = new WeakMap(), _tileset = new WeakMap();
 //# sourceMappingURL=tower_map.js.map

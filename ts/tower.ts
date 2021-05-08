@@ -1,4 +1,4 @@
-import { TowerMap } from 'tower_map.js';
+import { TowerMap } from './tower_map.js';
 
 export function main() {
   document.body.style.margin = '0';
@@ -10,5 +10,8 @@ export function main() {
   container.style.height = '100vmin';
 
   const map = new TowerMap(container);
-  map.draw();
+  map.set_size(20, 20);
+  map.set_tileset('tropical');
 };
+
+main();
