@@ -34,84 +34,84 @@ div {
 
 .road-tb {
   background-image: url('road1-tb.svg');
+  background-size: cover;
   grid-column-end: span 2;
   grid-row-end: span 3;
 }
 
 .road-lr {
   background-image: url('road1-lr.svg');
+  background-size: cover;
   grid-column-end: span 3;
   grid-row-end: span 2;
 }
 
 .road-br {
   background-image: url('road1-br.svg');
-  background-position: bottom right;
+  background-size: cover;
   grid-column-end: span 3;
   grid-row-end: span 3;
 }
 
 .road-bl {
   background-image: url('road1-bl.svg');
-  background-position: bottom left;
+  background-size: cover;
   grid-column-end: span 3;
   grid-row-end: span 3;
 }
 
 .road-tr {
   background-image: url('road1-tr.svg');
-  background-position: top right;
+  background-size: cover;
   grid-column-end: span 3;
   grid-row-end: span 3;
 }
 
 .road-tl {
   background-image: url('road1-tl.svg');
-  background-position: top left;
+  background-size: cover;
   grid-column-end: span 3;
   grid-row-end: span 3;
 }
 
 .road-blr {
   background-image: url('road1-blr.svg');
-  background-position: bottom;
+  background-size: cover;
   grid-column-end: span 4;
   grid-row-end: span 3;
 }
 
 .road-tlr {
   background-image: url('road1-tlr.svg');
-  background-position: top;
+  background-size: cover;
   grid-column-end: span 4;
   grid-row-end: span 3;
 }
 
 .road-ltb {
   background-image: url('road1-ltb.svg');
-  background-position: left;
+  background-size: cover;
   grid-column-end: span 3;
   grid-row-end: span 4;
 }
 
 .road-rtb {
   background-image: url('road1-rtb.svg');
-  background-position: right;
+  background-size: cover;
   grid-column-end: span 3;
   grid-row-end: span 4;
-  z-index: 1;
 }
 
 .road-tblr {
   background-image: url('road1-tblr.svg');
-  background-position: center;
+  background-size: cover;
   grid-column-end: span 4;
   grid-row-end: span 4;
 }
 
 .empty {
   background-image: url('empty1.svg');
-  background-position: center;
-  background-size: 80%;
+  background-size: cover;
   grid-column-end: span 2;
   grid-row-end: span 1;
 }
@@ -128,8 +128,8 @@ const map = `
 .||.................
 .||.................
 .||.................
-.++..........++++---
-.+++---+++...++++---
+.++..........++++...
+.+++---+++...++++...
 .+++---+++....++....
 ........++....++....
 ........||....+++---
@@ -137,13 +137,13 @@ const map = `
 ........||....++oo..
 ......oo++....++....
 .+++---+++...++++...
-.+++---+++...++++...
-.++...........++....
-.||.................
-.||.................
-.||.................
-.++.................
-++++---.............
+.+++---+++...++++.||
+.++...........++..||
+.||...............||
+.||...............++
+.||...........---+++
+.++...........---+++
+++++---...........++
 ++++---.............
 `;
 
