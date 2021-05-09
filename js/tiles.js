@@ -16,4 +16,9 @@ export const ROAD_RTB = Tile.rectangle('road-rtb', 6, 8);
 export const ROAD_TBLR = Tile.rectangle('road-tblr', 8, 8);
 // Tower base
 export const EMPTY = Tile.rectangle('empty', 4, 2);
+// Straight
+export const RIVER_LR = Tile.rectangle('river-lr', 6, 4);
+export const RIVER_TB = Tile.rectangle('river-tb', 4, 6);
+// Elbow
+export const RIVER_BR = Tile.rectangle('river-br', 6, 6);
 //# sourceMappingURL=tiles.js.map

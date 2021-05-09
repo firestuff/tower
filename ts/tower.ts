@@ -26,6 +26,10 @@ export function main() {
   grid.add_tile('road', tiles.ROAD_RTB, 34, 32);
   grid.add_tile('road', tiles.ROAD_TBLR, 30, 14);
   grid.add_tile('road', tiles.EMPTY, 14, 6);
+
+  grid.add_tile('water', tiles.RIVER_LR, 6, 7);
+  grid.add_tile('water', tiles.RIVER_BR, 0, 7);
+  grid.add_tile('water', tiles.RIVER_TB, 0, 13);
 };
 
 main();
