@@ -15,7 +15,10 @@
     "strictNullChecks": true
   },
   "files": [
-    "ts/tower.ts",
-    "ts/tower_map.ts"
+    "ts/grid.ts",
+    "ts/layer.ts",
+    "ts/tile.ts",
+    "ts/tiles.ts",
+    "ts/tower.ts"
   ]
 }
