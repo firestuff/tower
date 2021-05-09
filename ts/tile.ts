@@ -2,27 +2,11 @@ export class Tile {
   #name: string;
   #width: number;
   #height: number;
-  #mask: boolean[][];
 
-  constructor(name: string, width: number, height: number, mask: boolean[][]) {
+  constructor(name: string, width: number, height: number) {
     this.#name = name;
     this.#width = width;
     this.#height = height;
-    this.#mask = mask;
-  }
-
-  static rectangle(name: string, width: number, height: number): Tile {
-    const mask = Array(width).fill(Array(height).fill(true));
-    return new Tile(name, width, height, mask);
-  }
-
-  static from_mask(name: string, mask_string: string): Tile {
-    const mask = string_to_mask(mask_string);
-    return new Tile(name, mask.length, mask[0].length, mask);
-  }
-
-  get_mask(): boolean[][] {
-    return this.#mask;
   }
 
   get_elem(tileset: string): HTMLElement {
@@ -35,6 +19,7 @@ export class Tile {
   }
 }
 
+/*
 function string_to_mask(mask_string: string): boolean[][] {
   // mask_string: '\n+++\n+++\n'
 
@@ -57,3 +42,4 @@ function string_to_mask(mask_string: string): boolean[][] {
 
   return mask;
 }
+*/
