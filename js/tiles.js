@@ -21,4 +21,8 @@ export const RIVER_LR = Tile.rectangle('river-lr', 6, 4);
 export const RIVER_TB = Tile.rectangle('river-tb', 4, 6);
 // Elbow
 export const RIVER_BR = Tile.rectangle('river-br', 6, 6);
+export const RIVER_BL = Tile.rectangle('river-bl', 6, 6);
+export const RIVER_TR = Tile.rectangle('river-tr', 6, 6);
+export const RIVER_TL = Tile.rectangle('river-tl', 6, 6);
+export const BRIDGE_LR = Tile.rectangle('bridge-lr', 6, 4);
 //# sourceMappingURL=tiles.js.map
