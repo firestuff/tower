@@ -13,7 +13,16 @@ export const ROAD_TLR = Tile.rectangle('road-tlr', 8, 6);
 export const ROAD_LTB = Tile.rectangle('road-ltb', 6, 8);
 export const ROAD_RTB = Tile.rectangle('road-rtb', 6, 8);
 // +
-export const ROAD_TBLR = Tile.rectangle('road-tblr', 8, 8);
+export const ROAD_TBLR = Tile.from_mask('road-tblr', `
+.xxxxxx.
+xxxxxxxx
+xxxxxxxx
+xxxxxxxx
+xxxxxxxx
+xxxxxxxx
+xxxxxxxx
+.xxxxxx.
+`);
 // Tower base
 export const EMPTY = Tile.rectangle('empty', 4, 2);
 // Straight

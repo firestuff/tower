@@ -27,6 +27,10 @@ export class Tile {
         const mask = Array(width).fill(Array(height).fill(true));
         return new Tile(name, width, height, mask);
     }
+    static from_mask(name, mask_string) {
+        const mask = string_to_mask(mask_string);
+        return new Tile(name, mask.length, mask[0].length, mask);
+    }
     get_mask() {
         return __classPrivateFieldGet(this, _mask);
     }
@@ -40,4 +44,22 @@ export class Tile {
     }
 }
 _name = new WeakMap(), _width = new WeakMap(), _height = new WeakMap(), _mask = new WeakMap();
+function string_to_mask(mask_string) {
+    // mask_string: '\n+++\n+++\n'
+    const rows = mask_string.trim().split('\n');
+    // rows: ['+++', '+++']
+    const mask = [];
+    for (let x = 0; x < rows[0].length; x++) {
+        mask[x] = Array(rows.length);
+    }
+    // mask: [ [ empty, empty ], [ empty, empty ], [ empty, empty ] ]
+    for (let y = 0; y < rows.length; y++) {
+        const row = rows[y];
+        for (let x = 0; x < row.length; x++) {
+            const cell = row[x];
+            mask[x][y] = (cell.toUpperCase() == 'X');
+        }
+    }
+    return mask;
+}
 //# sourceMappingURL=tile.js.map

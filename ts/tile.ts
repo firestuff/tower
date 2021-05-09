@@ -16,6 +16,11 @@ export class Tile {
     return new Tile(name, width, height, mask);
   }
 
+  static from_mask(name: string, mask_string: string): Tile {
+    const mask = string_to_mask(mask_string);
+    return new Tile(name, mask.length, mask[0].length, mask);
+  }
+
   get_mask(): boolean[][] {
     return this.#mask;
   }
@@ -28,4 +33,27 @@ export class Tile {
     elem.style.gridRowEnd = `span ${this.#height}`;
     return elem;
   }
+}
+
+function string_to_mask(mask_string: string): boolean[][] {
+  // mask_string: '\n+++\n+++\n'
+
+  const rows = mask_string.trim().split('\n');
+  // rows: ['+++', '+++']
+
+  const mask = [];
+  for (let x = 0; x < rows[0].length; x++) {
+    mask[x] = Array(rows.length);
+  }
+  // mask: [ [ empty, empty ], [ empty, empty ], [ empty, empty ] ]
+
+  for (let y = 0; y < rows.length; y++) {
+    const row = rows[y];
+    for (let x = 0; x < row.length; x++) {
+      const cell = row[x];
+      mask[x][y] = (cell.toUpperCase() == 'X');
+    }
+  }
+
+  return mask;
 }
