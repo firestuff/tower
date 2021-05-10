@@ -1,12 +1,23 @@
+export interface AnimateDetail {
+  name: string;
+}
+
 export class Tile {
   name: string;
   width: number;
   height: number;
+  animations: Map<string, [Keyframe[], object]>;
 
   constructor(name: string, width: number, height: number) {
     this.name = name;
     this.width = width;
     this.height = height;
+
+    this.animations = new Map();
+  }
+
+  add_animation(name: string, keyframes: Keyframe[], options: object) {
+    this.animations.set(name, [keyframes, options]);
   }
 
   get_elem(tileset: string): HTMLElement {
@@ -15,6 +26,14 @@ export class Tile {
     elem.style.backgroundSize = 'cover';
     elem.style.gridColumnEnd = `span ${this.width}`;
     elem.style.gridRowEnd = `span ${this.height}`;
+
+    elem.addEventListener('animate', (e: CustomEvent<AnimateDetail>) => {
+      const animation = this.animations.get(e.detail.name);
+      if (animation) {
+        elem.animate(animation[0], animation[1]);
+      }
+    });
+
     return elem;
   }
 }

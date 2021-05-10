@@ -73,7 +73,7 @@ export function main() {
     grid.add_tile('bridge', tiles.BRIDGE_LR, 46, 26);
     grid.add_tile('bridge', tiles.BRIDGE_LR, 46, 18);
     grid.add_tile('bridge', tiles.BRIDGE_LR, 46, 10);
-    grid.add_tile('tower', tiles.FIREBALL1, 30, 18);
+    grid.add_tile('tower', tiles.TOWER_FIREBALL1, 30, 18);
     grid.add_tile('tower', tiles.FIREBALL, 31, 17);
 }
 ;

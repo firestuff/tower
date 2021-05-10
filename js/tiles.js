@@ -1,3 +1,4 @@
+import { LayeredTile } from './layered_tile.js';
 import { Tile } from './tile.js';
 // Straight
 export const ROAD_LR = new Tile('road-lr', 6, 4);
@@ -25,88 +26,37 @@ export const RIVER_BL = new Tile('river-bl', 6, 6);
 export const RIVER_TR = new Tile('river-tr', 6, 6);
 export const RIVER_TL = new Tile('river-tl', 6, 6);
 export const BRIDGE_LR = new Tile('bridge-lr', 6, 4);
-class Tower extends Tile {
-    get_elem(_) {
-        const elem = document.createElement('div');
-        elem.style.gridColumnEnd = `span ${this.width}`;
-        elem.style.gridRowEnd = `span ${this.height}`;
-        elem.style.position = 'relative';
-        const base = document.createElement('div');
-        elem.appendChild(base);
-        base.style.width = '100%';
-        base.style.height = '100%';
-        base.style.position = 'absolute';
-        base.style.top = '0';
-        base.style.left = '0';
-        base.style.backgroundImage = `url("images/tower/${this.name}.svg")`;
-        base.style.backgroundSize = 'cover';
-        base.style.zIndex = '2';
-        const back = document.createElement('div');
-        elem.appendChild(back);
-        back.style.width = '100%';
-        back.style.height = '100%';
-        back.style.position = 'absolute';
-        back.style.top = '0';
-        back.style.left = '0';
-        back.style.backgroundImage = `url("images/tower/${this.name}-back.svg")`;
-        back.style.backgroundSize = 'cover';
-        back.style.zIndex = '1';
-        const front = document.createElement('div');
-        elem.appendChild(front);
-        front.style.width = '100%';
-        front.style.height = '100%';
-        front.style.position = 'absolute';
-        front.style.top = '0';
-        front.style.left = '0';
-        front.style.backgroundImage = `url("images/tower/${this.name}-front.svg")`;
-        front.style.backgroundSize = 'cover';
-        front.style.zIndex = '3';
-        setInterval(() => {
-            back.animate([
-                {
-                    'offset': 0.0,
-                    'easing': 'cubic-bezier(0.02, 1.07, 0.73, 0.99)',
-                    'top': '0',
-                },
-                {
-                    'offset': 0.3,
-                    'easing': 'linear',
-                    'top': '20%',
-                },
-                {
-                    'offset': 1.0,
-                    'top': '0',
-                },
-            ], {
-                'duration': 3000,
-                'iterations': 1,
-            });
-            front.animate([
-                {
-                    'offset': 0.0,
-                    'easing': 'cubic-bezier(0.02, 1.07, 0.73, 0.99)',
-                    'top': '0',
-                },
-                {
-                    'offset': 0.3,
-                    'easing': 'linear',
-                    'top': '20%',
-                },
-                {
-                    'offset': 1.0,
-                    'top': '0',
-                },
-            ], {
-                'duration': 3000,
-                'iterations': 1,
-            });
-        }, 3250);
-        return elem;
-    }
+const tower_fireball1_back = new Tile('fireball1-back', 4, 4);
+const tower_fireball1 = new Tile('fireball1', 4, 4);
+const tower_fireball1_front = new Tile('fireball1-front', 4, 4);
+for (const tile of [tower_fireball1_back, tower_fireball1_front]) {
+    tile.add_animation('fire', [
+        {
+            'offset': 0.0,
+            'easing': 'cubic-bezier(0.02, 1.07, 0.73, 0.99)',
+            'top': '0',
+        },
+        {
+            'offset': 0.3,
+            'easing': 'linear',
+            'top': '20%',
+        },
+        {
+            'offset': 1.0,
+            'top': '0',
+        },
+    ], {
+        'duration': 3000,
+        'iterations': 1,
+    });
 }
-export const FIREBALL1 = new Tower('fireball1', 4, 4);
+export const TOWER_FIREBALL1 = new LayeredTile([
+    tower_fireball1_back,
+    tower_fireball1,
+    tower_fireball1_front,
+]);
 class Fireball extends Tile {
-    get_elem(_) {
+    get_elem(tileset) {
         const elem = document.createElement('div');
         elem.style.gridColumnEnd = `span ${this.width}`;
         elem.style.gridRowEnd = `span ${this.height}`;
@@ -118,7 +68,7 @@ class Fireball extends Tile {
         base.style.position = 'absolute';
         base.style.top = '0';
         base.style.left = '0';
-        base.style.backgroundImage = `url("images/tower/${this.name}.svg")`;
+        base.style.backgroundImage = `url("images/${tileset}/${this.name}.svg")`;
         base.style.backgroundSize = 'cover';
         base.style.visibility = 'hidden';
         setInterval(() => {

@@ -3,6 +3,10 @@ export class Tile {
         this.name = name;
         this.width = width;
         this.height = height;
+        this.animations = new Map();
+    }
+    add_animation(name, keyframes, options) {
+        this.animations.set(name, [keyframes, options]);
     }
     get_elem(tileset) {
         const elem = document.createElement('div');
@@ -10,6 +14,12 @@ export class Tile {
         elem.style.backgroundSize = 'cover';
         elem.style.gridColumnEnd = `span ${this.width}`;
         elem.style.gridRowEnd = `span ${this.height}`;
+        elem.addEventListener('animate', (e) => {
+            const animation = this.animations.get(e.detail.name);
+            if (animation) {
+                elem.animate(animation[0], animation[1]);
+            }
+        });
         return elem;
     }
 }
