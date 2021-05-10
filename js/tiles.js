@@ -71,7 +71,7 @@ class Tower extends Tile {
                 {
                     'offset': 0.3,
                     'easing': 'linear',
-                    'top': '25%',
+                    'top': '20%',
                 },
                 {
                     'offset': 1.0,
@@ -90,7 +90,7 @@ class Tower extends Tile {
                 {
                     'offset': 0.3,
                     'easing': 'linear',
-                    'top': '25%',
+                    'top': '20%',
                 },
                 {
                     'offset': 1.0,
@@ -100,7 +100,7 @@ class Tower extends Tile {
                 'duration': 3000,
                 'iterations': 1,
             });
-        }, 5000);
+        }, 3250);
         return elem;
     }
 }
@@ -125,12 +125,12 @@ class Fireball extends Tile {
             base.animate([
                 {
                     'offset': 0.0,
-                    'easing': 'cubic-bezier(0.33333, 0.66667, 0.66667, 1)',
+                    'easing': 'cubic-bezier(0.33, 0.66, 0.66, 1.00)',
                     'top': '0',
                 },
                 {
                     'offset': 0.50,
-                    'easing': 'cubic-bezier(0.33333, 0, 0.66667, 0.33333)',
+                    'easing': 'cubic-bezier(0.33, 0.00, 0.66, 0.33)',
                     'top': '-500%',
                 },
                 {
@@ -159,7 +159,7 @@ class Fireball extends Tile {
                 'duration': 1500,
                 'iterations': 1,
             });
-        }, 5000);
+        }, 3250);
         return elem;
     }
 }
