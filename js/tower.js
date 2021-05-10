@@ -20,7 +20,7 @@ export function main() {
     const grid = new Grid(real);
     grid.set_size(70, 56);
     grid.set_tileset('tropical');
-    grid.set_layers(['road', 'water', 'bridge']);
+    grid.set_layers(['road', 'water', 'bridge', 'tower']);
     grid.add_tile('road', tiles.ROAD_TB, 20, 46);
     grid.add_tile('road', tiles.ROAD_BL, 18, 40);
     grid.add_tile('road', tiles.ROAD_TR, 12, 38);
@@ -59,6 +59,7 @@ export function main() {
     grid.add_tile('road', tiles.ROAD_LR, 46, 10);
     grid.add_tile('road', tiles.ROAD_LR, 52, 10);
     grid.add_tile('road', tiles.ROAD_LR, 58, 10);
+    grid.add_tile('road', tiles.EMPTY, 30, 20);
     grid.add_tile('water', tiles.RIVER_TB, 47, 46);
     grid.add_tile('water', tiles.RIVER_TB, 47, 40);
     grid.add_tile('water', tiles.RIVER_TB, 47, 34);
@@ -72,6 +73,8 @@ export function main() {
     grid.add_tile('bridge', tiles.BRIDGE_LR, 46, 26);
     grid.add_tile('bridge', tiles.BRIDGE_LR, 46, 18);
     grid.add_tile('bridge', tiles.BRIDGE_LR, 46, 10);
+    grid.add_tile('tower', tiles.FIREBALL1, 30, 18);
+    grid.add_tile('tower', tiles.FIREBALL, 31, 17);
 }
 ;
 main();

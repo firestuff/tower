@@ -1,20 +1,20 @@
 export class Tile {
-  #name: string;
-  #width: number;
-  #height: number;
+  name: string;
+  width: number;
+  height: number;
 
   constructor(name: string, width: number, height: number) {
-    this.#name = name;
-    this.#width = width;
-    this.#height = height;
+    this.name = name;
+    this.width = width;
+    this.height = height;
   }
 
   get_elem(tileset: string): HTMLElement {
     const elem = document.createElement('div');
-    elem.style.backgroundImage = `url("images/${tileset}/${this.#name}.svg")`;
+    elem.style.backgroundImage = `url("images/${tileset}/${this.name}.svg")`;
     elem.style.backgroundSize = 'cover';
-    elem.style.gridColumnEnd = `span ${this.#width}`;
-    elem.style.gridRowEnd = `span ${this.#height}`;
+    elem.style.gridColumnEnd = `span ${this.width}`;
+    elem.style.gridRowEnd = `span ${this.height}`;
     return elem;
   }
 }
