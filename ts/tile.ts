@@ -10,4 +10,6 @@ export abstract class Tile {
   get_elem(): HTMLElement {
     return this.elem;
   }
+
+  abstract play(name: string): void;
 }

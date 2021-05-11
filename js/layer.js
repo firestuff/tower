@@ -24,9 +24,9 @@ export class Layer {
         __classPrivateFieldSet(this, _tileset, tileset);
     }
     add_tile(tile_factory) {
-        const elem = tile_factory.build(__classPrivateFieldGet(this, _tileset)).get_elem();
-        elem.style.zIndex = `${__classPrivateFieldGet(this, _level)}`;
-        return elem;
+        const tile = tile_factory.build(__classPrivateFieldGet(this, _tileset));
+        tile.get_elem().style.zIndex = `${__classPrivateFieldGet(this, _level)}`;
+        return tile;
     }
 }
 _level = new WeakMap(), _tileset = new WeakMap();

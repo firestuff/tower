@@ -6,5 +6,11 @@ export class SimpleTile extends Tile {
         this.elem.style.backgroundSize = 'cover';
         this.animations = animations;
     }
+    play(name) {
+        const animation = this.animations.get(name);
+        if (animation) {
+            this.elem.animate(...animation);
+        }
+    }
 }
 //# sourceMappingURL=simple_tile.js.map

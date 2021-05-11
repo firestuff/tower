@@ -11,5 +11,12 @@ export class SimpleTile extends Tile {
 
     this.animations = animations;
   }
+
+  play(name: string): void {
+    const animation = this.animations.get(name);
+    if (animation) {
+      this.elem.animate(...animation);
+    }
+  }
 }
 

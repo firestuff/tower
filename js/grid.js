@@ -53,12 +53,13 @@ export class Grid {
         }
     }
     add_tile(layer, tile_factory, x, y) {
-        const elem = __classPrivateFieldGet(this, _layers).get(layer).add_tile(tile_factory);
+        const tile = __classPrivateFieldGet(this, _layers).get(layer).add_tile(tile_factory);
+        const elem = tile.get_elem();
         // Grids are 1-indexed
         elem.style.gridColumnStart = `${x + 1}`;
         elem.style.gridRowStart = `${y + 1}`;
         __classPrivateFieldGet(this, _prnt).appendChild(elem);
-        return true;
+        return tile;
     }
 }
 _prnt = new WeakMap(), _tileset = new WeakMap(), _layers = new WeakMap();

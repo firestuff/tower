@@ -1,4 +1,5 @@
 import { Layer } from './layer.js';
+import { Tile } from './tile.js';
 import { TileFactory } from './tile_factory.js';
 
 export class Grid {
@@ -49,12 +50,13 @@ export class Grid {
     }
   }
 
-  add_tile(layer: string, tile_factory: TileFactory, x: number, y: number) {
-    const elem = this.#layers.get(layer)!.add_tile(tile_factory);
+  add_tile(layer: string, tile_factory: TileFactory, x: number, y: number): Tile {
+    const tile = this.#layers.get(layer)!.add_tile(tile_factory);
+    const elem = tile.get_elem();
     // Grids are 1-indexed
     elem.style.gridColumnStart = `${x + 1}`;
     elem.style.gridRowStart = `${y + 1}`;
     this.#prnt.appendChild(elem);
-    return true;
+    return tile;
   }
 }

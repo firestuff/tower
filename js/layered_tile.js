@@ -2,17 +2,24 @@ import { Tile } from './tile.js';
 export class LayeredTile extends Tile {
     constructor(width, height, tiles) {
         super(width, height);
+        this.tiles = [];
         this.elem.style.position = 'relative';
         for (let i = 0; i < tiles.length; i++) {
             const tile = tiles[i];
-            const sub = tile.get_elem();
-            this.elem.appendChild(sub);
-            sub.style.width = '100%';
-            sub.style.height = '100%';
-            sub.style.position = 'absolute';
-            sub.style.top = '0';
-            sub.style.left = '0';
-            sub.style.zIndex = `${i}`;
+            this.tiles.push(tile);
+            const child = tile.get_elem();
+            this.elem.appendChild(child);
+            child.style.width = '100%';
+            child.style.height = '100%';
+            child.style.position = 'absolute';
+            child.style.top = '0';
+            child.style.left = '0';
+            child.style.zIndex = `${i}`;
+        }
+    }
+    play(name) {
+        for (const tile of this.tiles) {
+            tile.play(name);
         }
     }
 }
