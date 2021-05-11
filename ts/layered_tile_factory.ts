@@ -5,7 +5,11 @@ export class LayeredTileFactory extends TileFactory {
   tile_factories: TileFactory[];
 
   constructor(tile_factories: TileFactory[]) {
-    super(tile_factories[0].width, tile_factories[0].height);
+    super(
+      tile_factories[0].layer_name,
+      tile_factories[0].width,
+      tile_factories[0].height,
+    );
     this.tile_factories = tile_factories;
   }
 

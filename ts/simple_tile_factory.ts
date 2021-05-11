@@ -5,8 +5,8 @@ export class SimpleTileFactory extends TileFactory {
   name: string;
   animations: Map<string, [Keyframe[], object]>;
 
-  constructor(width: number, height: number, name: string) {
-    super(width, height);
+  constructor(layer_name: string, width: number, height: number, name: string) {
+    super(layer_name, width, height);
     this.name = name;
     this.animations = new Map();
   }

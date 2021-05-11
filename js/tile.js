@@ -4,8 +4,5 @@ export class Tile {
         this.elem.style.gridColumnEnd = `span ${width}`;
         this.elem.style.gridRowEnd = `span ${height}`;
     }
-    get_elem() {
-        return this.elem;
-    }
 }
 //# sourceMappingURL=tile.js.map

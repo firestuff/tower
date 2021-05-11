@@ -7,14 +7,13 @@ export class LayeredTile extends Tile {
         for (let i = 0; i < tiles.length; i++) {
             const tile = tiles[i];
             this.tiles.push(tile);
-            const child = tile.get_elem();
-            this.elem.appendChild(child);
-            child.style.width = '100%';
-            child.style.height = '100%';
-            child.style.position = 'absolute';
-            child.style.top = '0';
-            child.style.left = '0';
-            child.style.zIndex = `${i}`;
+            this.elem.appendChild(tile.elem);
+            tile.elem.style.width = '100%';
+            tile.elem.style.height = '100%';
+            tile.elem.style.position = 'absolute';
+            tile.elem.style.top = '0';
+            tile.elem.style.left = '0';
+            tile.elem.style.zIndex = `${i}`;
         }
     }
     play(name) {

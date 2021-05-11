@@ -1,8 +1,8 @@
 import { SimpleTile } from './simple_tile.js';
 import { TileFactory } from './tile_factory.js';
 export class SimpleTileFactory extends TileFactory {
-    constructor(width, height, name) {
-        super(width, height);
+    constructor(layer_name, width, height, name) {
+        super(layer_name, width, height);
         this.name = name;
         this.animations = new Map();
     }

@@ -25,7 +25,7 @@ export class Layer {
     }
     add_tile(tile_factory) {
         const tile = tile_factory.build(__classPrivateFieldGet(this, _tileset));
-        tile.get_elem().style.zIndex = `${__classPrivateFieldGet(this, _level)}`;
+        tile.elem.style.zIndex = `${__classPrivateFieldGet(this, _level)}`;
         return tile;
     }
 }

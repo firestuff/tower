@@ -7,9 +7,5 @@ export abstract class Tile {
     this.elem.style.gridRowEnd = `span ${height}`;
   }
 
-  get_elem(): HTMLElement {
-    return this.elem;
-  }
-
   abstract play(name: string): void;
 }

@@ -50,13 +50,14 @@ export class Grid {
     }
   }
 
-  add_tile(layer: string, tile_factory: TileFactory, x: number, y: number): Tile {
-    const tile = this.#layers.get(layer)!.add_tile(tile_factory);
-    const elem = tile.get_elem();
+  add_tile(tile_factory: TileFactory, x: number, y: number): Tile {
+    const tile = this.#layers.get(tile_factory.layer_name)!.add_tile(tile_factory);
+
     // Grids are 1-indexed
-    elem.style.gridColumnStart = `${x + 1}`;
-    elem.style.gridRowStart = `${y + 1}`;
-    this.#prnt.appendChild(elem);
+    tile.elem.style.gridColumnStart = `${x + 1}`;
+    tile.elem.style.gridRowStart = `${y + 1}`;
+    this.#prnt.appendChild(tile.elem);
+
     return tile;
   }
 }

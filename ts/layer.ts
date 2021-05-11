@@ -15,7 +15,7 @@ export class Layer {
 
   add_tile(tile_factory: TileFactory): Tile {
     const tile = tile_factory.build(this.#tileset);
-    tile.get_elem().style.zIndex = `${this.#level}`;
+    tile.elem.style.zIndex = `${this.#level}`;
     return tile;
   }
 }
