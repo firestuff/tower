@@ -1,4 +1,5 @@
 import { Grid } from './grid.js';
+import { projectile } from './projectile.js';
 import * as tiles from './tiles.js';
 export function main() {
     document.body.style.margin = '0';
@@ -20,7 +21,7 @@ export function main() {
     const grid = new Grid(real);
     grid.set_size(70, 56);
     grid.set_tileset('tropical');
-    grid.set_layers(['road', 'water', 'bridge', 'surface']);
+    grid.set_layers(['road', 'water', 'bridge', 'surface', 'projectile']);
     grid.add_tile(tiles.ROAD_TB, 20, 46);
     grid.add_tile(tiles.ROAD_BL, 18, 40);
     grid.add_tile(tiles.ROAD_TR, 12, 38);
@@ -74,7 +75,12 @@ export function main() {
     grid.add_tile(tiles.BRIDGE_LR, 46, 18);
     grid.add_tile(tiles.BRIDGE_LR, 46, 10);
     const tower = grid.add_tile(tiles.TOWER_FIREBALL1, 30, 18);
-    setInterval(() => tower.play('fire'), 3250);
+    setInterval(() => {
+        tower.play('fire');
+        const fireball = grid.add_tile(projectile(tiles.FIREBALL), 31, 17);
+        fireball.play('launch-x').finished.then(() => fireball.remove());
+        fireball.play('launch-y');
+    }, 3250);
 }
 ;
 main();

@@ -17,9 +17,11 @@ export class LayeredTile extends Tile {
         }
     }
     play(name) {
+        let ret = undefined;
         for (const tile of this.tiles) {
-            tile.play(name);
+            ret = tile.play(name) || ret;
         }
+        return ret;
     }
 }
 //# sourceMappingURL=layered_tile.js.map

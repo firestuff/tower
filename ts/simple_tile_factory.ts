@@ -23,6 +23,14 @@ export class SimpleTileFactory extends TileFactory {
       this.animations,
     );
   }
+
+  copy(): SimpleTileFactory {
+    const stf = new SimpleTileFactory(this.layer_name, this.width, this.height, this.name);
+    for (const [name, [keyframes, options]] of this.animations) {
+      stf.add_animation(name, keyframes, options);
+    }
+    return stf;
+  }
 }
 
 /*

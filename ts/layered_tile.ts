@@ -23,9 +23,11 @@ export class LayeredTile extends Tile {
     }
   }
 
-  play(name: string): void {
+  play(name: string): Animation | undefined {
+    let ret = undefined;
     for (const tile of this.tiles) {
-      tile.play(name);
+      ret = tile.play(name) || ret;
     }
+    return ret;
   }
 }

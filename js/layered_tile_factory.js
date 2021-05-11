@@ -12,5 +12,8 @@ export class LayeredTileFactory extends TileFactory {
         }
         return new LayeredTile(this.width, this.height, tiles);
     }
+    copy() {
+        return new LayeredTileFactory(this.tile_factories);
+    }
 }
 //# sourceMappingURL=layered_tile_factory.js.map

@@ -12,4 +12,6 @@ export abstract class TileFactory {
   }
 
   abstract build(tileset: string): Tile;
+
+  abstract copy(): TileFactory;
 }

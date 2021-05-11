@@ -22,4 +22,8 @@ export class LayeredTileFactory extends TileFactory {
 
     return new LayeredTile(this.width, this.height, tiles);
   }
+
+  copy(): LayeredTileFactory {
+    return new LayeredTileFactory(this.tile_factories);
+  }
 }

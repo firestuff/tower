@@ -12,10 +12,12 @@ export class SimpleTile extends Tile {
     this.animations = animations;
   }
 
-  play(name: string): void {
+  play(name: string): Animation | undefined {
     const animation = this.animations.get(name);
     if (animation) {
-      this.elem.animate(...animation);
+      return this.elem.animate(...animation);
+    } else {
+      return undefined;
     }
   }
 }

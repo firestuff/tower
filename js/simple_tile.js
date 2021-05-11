@@ -9,7 +9,10 @@ export class SimpleTile extends Tile {
     play(name) {
         const animation = this.animations.get(name);
         if (animation) {
-            this.elem.animate(...animation);
+            return this.elem.animate(...animation);
+        }
+        else {
+            return undefined;
         }
     }
 }

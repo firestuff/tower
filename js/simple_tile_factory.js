@@ -12,6 +12,13 @@ export class SimpleTileFactory extends TileFactory {
     build(tileset) {
         return new SimpleTile(this.width, this.height, `images/${tileset}/${this.name}.svg`, this.animations);
     }
+    copy() {
+        const stf = new SimpleTileFactory(this.layer_name, this.width, this.height, this.name);
+        for (const [name, [keyframes, options]] of this.animations) {
+            stf.add_animation(name, keyframes, options);
+        }
+        return stf;
+    }
 }
 /*
 function string_to_mask(mask_string: string): boolean[][] {
