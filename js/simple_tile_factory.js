@@ -1,13 +1,9 @@
 import { SimpleTile } from './simple_tile.js';
-import { TileFactory } from './tile_factory.js';
-export class SimpleTileFactory extends TileFactory {
+import { AnimatableTileFactory } from './animatable_tile_factory.js';
+export class SimpleTileFactory extends AnimatableTileFactory {
     constructor(layer_name, width, height, name) {
         super(layer_name, width, height);
         this.name = name;
-        this.animations = new Map();
-    }
-    add_animation(name, keyframes, options) {
-        this.animations.set(name, [keyframes, options]);
     }
     build(tileset) {
         return new SimpleTile(this.width, this.height, `images/${tileset}/${this.name}.svg`, this.animations);

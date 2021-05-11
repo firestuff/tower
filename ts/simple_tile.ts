@@ -1,24 +1,11 @@
-import { Tile } from './tile.js';
+import { AnimatableTile } from './animatable_tile.js';
 
-export class SimpleTile extends Tile {
-  animations: Map<string, [Keyframe[], object]>;
-
+export class SimpleTile extends AnimatableTile {
   constructor(width: number, height: number, image_url: string, animations: Map<string, [Keyframe[], object]>) {
-    super(width, height);
+    super(width, height, animations);
 
     this.elem.style.backgroundImage = `url('${encodeURIComponent(image_url)}')`;
     this.elem.style.backgroundSize = 'cover';
-
-    this.animations = animations;
-  }
-
-  play(name: string): Animation | undefined {
-    const animation = this.animations.get(name);
-    if (animation) {
-      return this.elem.animate(...animation);
-    } else {
-      return undefined;
-    }
   }
 }
 

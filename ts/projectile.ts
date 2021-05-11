@@ -1,9 +1,9 @@
 import { LayeredTileFactory } from './layered_tile_factory.js';
-import { SimpleTileFactory } from './simple_tile_factory.js';
+import { AnimatableTileFactory } from './animatable_tile_factory.js';
 import { TileFactory } from './tile_factory.js';
 
-export function projectile(simple_tile_factory: SimpleTileFactory): TileFactory {
-  const copy = simple_tile_factory.copy();
+export function projectile(tile_factory: AnimatableTileFactory): TileFactory {
+  const copy = tile_factory.copy();
 
   copy.add_animation(
     'launch-x',

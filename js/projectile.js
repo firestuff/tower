@@ -1,6 +1,6 @@
 import { LayeredTileFactory } from './layered_tile_factory.js';
-export function projectile(simple_tile_factory) {
-    const copy = simple_tile_factory.copy();
+export function projectile(tile_factory) {
+    const copy = tile_factory.copy();
     copy.add_animation('launch-x', [
         {
             'offset': 0.0,
