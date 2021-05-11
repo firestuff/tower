@@ -20,7 +20,7 @@
     "ts/layered_tile.ts",
     "ts/layered_tile_factory.ts",
     "ts/layer.ts",
-    "ts/projectile.ts",
+    "ts/projectile_tile_factory.ts",
     "ts/simple_tile.ts",
     "ts/simple_tile_factory.ts",
     "ts/tile.ts",

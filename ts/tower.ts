@@ -1,5 +1,5 @@
 import { Grid } from './grid.js';
-import { projectile } from './projectile.js'
+import { ProjectileTileFactory } from './projectile_tile_factory.js'
 import * as tiles from './tiles.js';
 
 export function main() {
@@ -85,9 +85,7 @@ export function main() {
   const tower = grid.add_tile(tiles.TOWER_FIREBALL1, 30, 18);
   setInterval(() => {
     tower.play('fire');
-    const fireball = grid.add_tile(projectile(tiles.FIREBALL), 31, 17);
-    fireball.play('launch-x')!.finished.then(() => fireball.remove());
-    fireball.play('launch-y');
+    grid.add_tile(new ProjectileTileFactory(tiles.FIREBALL), 31, 17);
   }, 3250);
 };
 
