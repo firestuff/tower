@@ -2,7 +2,7 @@ export interface AnimateDetail {
   name: string;
 }
 
-export class Tile {
+export class TileFactory {
   name: string;
   width: number;
   height: number;

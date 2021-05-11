@@ -1,4 +1,4 @@
-export class Tile {
+export class TileFactory {
     constructor(name, width, height) {
         this.name = name;
         this.width = width;
@@ -47,4 +47,4 @@ function string_to_mask(mask_string: string): boolean[][] {
   return mask;
 }
 */
-//# sourceMappingURL=tile.js.map
+//# sourceMappingURL=tile_factory.js.map

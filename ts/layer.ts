@@ -1,4 +1,4 @@
-import { Tile } from './tile.js';
+import { TileFactory } from './tile_factory.js';
 
 export class Layer {
   #level: number;
@@ -12,8 +12,8 @@ export class Layer {
     this.#tileset = tileset;
   }
 
-  add_tile(tile: Tile): HTMLElement {
-    const elem = tile.get_elem(this.#tileset);
+  add_tile(tile_factory: TileFactory): HTMLElement {
+    const elem = tile_factory.get_elem(this.#tileset);
     elem.style.zIndex = `${this.#level}`;
     return elem;
   }

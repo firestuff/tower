@@ -52,8 +52,8 @@ export class Grid {
             layer.set_level(level);
         }
     }
-    add_tile(layer, tile, x, y) {
-        const elem = __classPrivateFieldGet(this, _layers).get(layer).add_tile(tile);
+    add_tile(layer, tile_factory, x, y) {
+        const elem = __classPrivateFieldGet(this, _layers).get(layer).add_tile(tile_factory);
         // Grids are 1-indexed
         elem.style.gridColumnStart = `${x + 1}`;
         elem.style.gridRowStart = `${y + 1}`;

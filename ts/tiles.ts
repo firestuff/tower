@@ -1,43 +1,43 @@
-import { LayeredTile } from './layered_tile.js';
-import { Tile } from './tile.js';
+import { LayeredTileFactory } from './layered_tile_factory.js';
+import { TileFactory } from './tile_factory.js';
 
 // Straight
-export const ROAD_LR = new Tile('road-lr', 6, 4);
-export const ROAD_TB = new Tile('road-tb', 4, 6);
+export const ROAD_LR = new TileFactory('road-lr', 6, 4);
+export const ROAD_TB = new TileFactory('road-tb', 4, 6);
 
 // Elbow
-export const ROAD_BL = new Tile('road-bl', 6, 6);
-export const ROAD_BR = new Tile('road-br', 6, 6);
-export const ROAD_TL = new Tile('road-tl', 6, 6);
-export const ROAD_TR = new Tile('road-tr', 6, 6);
+export const ROAD_BL = new TileFactory('road-bl', 6, 6);
+export const ROAD_BR = new TileFactory('road-br', 6, 6);
+export const ROAD_TL = new TileFactory('road-tl', 6, 6);
+export const ROAD_TR = new TileFactory('road-tr', 6, 6);
 
 // T
-export const ROAD_BLR = new Tile('road-blr', 8, 6);
-export const ROAD_TLR = new Tile('road-tlr', 8, 6);
-export const ROAD_LTB = new Tile('road-ltb', 6, 8);
-export const ROAD_RTB = new Tile('road-rtb', 6, 8);
+export const ROAD_BLR = new TileFactory('road-blr', 8, 6);
+export const ROAD_TLR = new TileFactory('road-tlr', 8, 6);
+export const ROAD_LTB = new TileFactory('road-ltb', 6, 8);
+export const ROAD_RTB = new TileFactory('road-rtb', 6, 8);
 
 // +
-export const ROAD_TBLR = new Tile('road-tblr', 8, 8);
+export const ROAD_TBLR = new TileFactory('road-tblr', 8, 8);
 
 // Tower base
-export const EMPTY = new Tile('empty', 4, 2);
+export const EMPTY = new TileFactory('empty', 4, 2);
 
 // Straight
-export const RIVER_LR = new Tile('river-lr', 6, 4);
-export const RIVER_TB = new Tile('river-tb', 4, 6);
+export const RIVER_LR = new TileFactory('river-lr', 6, 4);
+export const RIVER_TB = new TileFactory('river-tb', 4, 6);
 
 // Elbow
-export const RIVER_BR = new Tile('river-br', 6, 6);
-export const RIVER_BL = new Tile('river-bl', 6, 6);
-export const RIVER_TR = new Tile('river-tr', 6, 6);
-export const RIVER_TL = new Tile('river-tl', 6, 6);
+export const RIVER_BR = new TileFactory('river-br', 6, 6);
+export const RIVER_BL = new TileFactory('river-bl', 6, 6);
+export const RIVER_TR = new TileFactory('river-tr', 6, 6);
+export const RIVER_TL = new TileFactory('river-tl', 6, 6);
 
-export const BRIDGE_LR = new Tile('bridge-lr', 6, 4);
+export const BRIDGE_LR = new TileFactory('bridge-lr', 6, 4);
 
-const tower_fireball1_back = new Tile('fireball1-back', 4, 4);
-const tower_fireball1 = new Tile('fireball1', 4, 4);
-const tower_fireball1_front = new Tile('fireball1-front', 4, 4);
+const tower_fireball1_back = new TileFactory('fireball1-back', 4, 4);
+const tower_fireball1 = new TileFactory('fireball1', 4, 4);
+const tower_fireball1_front = new TileFactory('fireball1-front', 4, 4);
 
 for (const tile of [tower_fireball1_back, tower_fireball1_front]) {
   tile.add_animation(
@@ -68,13 +68,13 @@ for (const tile of [tower_fireball1_back, tower_fireball1_front]) {
   );
 }
 
-export const TOWER_FIREBALL1 = new LayeredTile([
+export const TOWER_FIREBALL1 = new LayeredTileFactory([
   tower_fireball1_back,
   tower_fireball1,
   tower_fireball1_front,
 ]);
 
-class Fireball extends Tile {
+class Fireball extends TileFactory {
   get_elem(tileset: string): HTMLElement {
     const elem = document.createElement('div');
     elem.style.gridColumnEnd = `span ${this.width}`;

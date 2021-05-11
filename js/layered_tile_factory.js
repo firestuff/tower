@@ -1,5 +1,5 @@
-import { Tile } from './tile.js';
-export class LayeredTile extends Tile {
+import { TileFactory } from './tile_factory.js';
+export class LayeredTileFactory extends TileFactory {
     constructor(tiles) {
         super('', tiles[0].width, tiles[0].height);
         this.tiles = tiles;
@@ -32,4 +32,4 @@ export class LayeredTile extends Tile {
         return elem;
     }
 }
-//# sourceMappingURL=layered_tile.js.map
+//# sourceMappingURL=layered_tile_factory.js.map

@@ -1,9 +1,9 @@
-import { AnimateDetail, Tile } from './tile.js';
+import { AnimateDetail, TileFactory } from './tile_factory.js';
 
-export class LayeredTile extends Tile {
-  tiles: Tile[];
+export class LayeredTileFactory extends TileFactory {
+  tiles: TileFactory[];
 
-  constructor(tiles: Tile[]) {
+  constructor(tiles: TileFactory[]) {
     super('', tiles[0].width, tiles[0].height);
     this.tiles = tiles;
   }

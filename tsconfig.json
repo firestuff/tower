@@ -16,7 +16,8 @@
   "files": [
     "ts/grid.ts",
     "ts/layer.ts",
-    "ts/tile.ts",
+    "ts/layered_tile_factory.ts",
+    "ts/tile_factory.ts",
     "ts/tiles.ts",
     "ts/tower.ts"
   ]
