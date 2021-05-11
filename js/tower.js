@@ -74,10 +74,13 @@ export function main() {
     grid.add_tile(tiles.BRIDGE_LR, 46, 26);
     grid.add_tile(tiles.BRIDGE_LR, 46, 18);
     grid.add_tile(tiles.BRIDGE_LR, 46, 10);
+    function rand(min, max) {
+        return Math.random() * (max - min) + min;
+    }
     const tower = grid.add_tile(tiles.TOWER_FIREBALL1, 30, 18);
     setInterval(() => {
         tower.play('fire');
-        grid.add_tile(new ProjectileTileFactory(tiles.FIREBALL, -20, 5, 5, 1.5), 31, 17);
+        grid.add_tile(new ProjectileTileFactory(tiles.FIREBALL, rand(-20, 20), rand(-10, 20), 5, 1.5, 10), 31, 17);
     }, 3250);
 }
 ;

@@ -9,10 +9,11 @@ export class ProjectileTileFactory extends TileFactory {
   target_relative_y: number;
   spin: number;
   speed: number;
+  loft: number;
 
   tile_factory: TileFactory;
 
-  constructor(tile_factory: AnimatableTileFactory, target_relative_x: number, target_relative_y: number, spin: number, speed: number) {
+  constructor(tile_factory: AnimatableTileFactory, target_relative_x: number, target_relative_y: number, spin: number, speed: number, loft: number) {
     super(tile_factory.layer_name, tile_factory.width, tile_factory.height);
 
     this.source_tile_factory = tile_factory;
@@ -20,6 +21,7 @@ export class ProjectileTileFactory extends TileFactory {
     this.target_relative_y = target_relative_y;
     this.spin = spin;
     this.speed = speed;
+    this.loft = loft;
 
     const copy = tile_factory.copy();
     const distance = Math.sqrt(target_relative_x ** 2 + target_relative_y ** 2);
@@ -40,7 +42,7 @@ export class ProjectileTileFactory extends TileFactory {
         },
       ],
       {
-        'duration': distance * (1 / speed) * 100,
+        'duration': distance / speed * 100,
         'iterations': 1,
       },
     );
@@ -54,9 +56,9 @@ export class ProjectileTileFactory extends TileFactory {
           'top': '0',
         },
         {
-          'offset': 0.50,
+          'offset': 0.50 - Math.abs(target_relative_y / distance * 0.50),
           'easing': 'cubic-bezier(0.33, 0.00, 0.66, 0.33)',
-          'top': `-500%`,
+          'top': `${((-1 * loft / tile_factory.height) + ((target_relative_y / distance) * (loft / tile_factory.height))) * 100}%`,
         },
         {
           'offset': 1.0,
@@ -64,7 +66,7 @@ export class ProjectileTileFactory extends TileFactory {
         },
       ],
       {
-        'duration': distance * (1 / speed) * 100,
+        'duration': distance / speed * 100,
         'iterations': 1,
       },
     );
@@ -86,6 +88,7 @@ export class ProjectileTileFactory extends TileFactory {
       this.target_relative_y,
       this.spin,
       this.speed,
+      this.loft,
     );
   }
 }
