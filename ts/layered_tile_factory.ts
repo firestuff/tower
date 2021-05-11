@@ -1,42 +1,21 @@
-import { AnimateDetail, TileFactory } from './tile_factory.js';
+import { LayeredTile } from './layered_tile.js';
+import { TileFactory } from './tile_factory.js';
 
 export class LayeredTileFactory extends TileFactory {
-  tiles: TileFactory[];
+  tile_factories: TileFactory[];
 
-  constructor(tiles: TileFactory[]) {
-    super('', tiles[0].width, tiles[0].height);
-    this.tiles = tiles;
+  constructor(tile_factories: TileFactory[]) {
+    super(tile_factories[0].width, tile_factories[0].height);
+    this.tile_factories = tile_factories;
   }
 
-  get_elem(tileset: string): HTMLElement {
-    const elem = document.createElement('div');
-    elem.style.gridColumnEnd = `span ${this.width}`;
-    elem.style.gridRowEnd = `span ${this.height}`;
-    elem.style.position = 'relative';
+  build(tileset: string): LayeredTile {
+    const tiles = [];
 
-    for (let i = 0; i < this.tiles.length; i++) {
-      const tile = this.tiles[i];
-      const sub = tile.get_elem(tileset);
-      elem.appendChild(sub);
-      sub.style.width = '100%';
-      sub.style.height = '100%';
-      sub.style.position = 'absolute';
-      sub.style.top = '0';
-      sub.style.left = '0';
-      sub.style.zIndex = `${i}`;
+    for (const tile_factory of this.tile_factories) {
+      tiles.push(tile_factory.build(tileset));
     }
 
-    elem.addEventListener('animate', (e: CustomEvent<AnimateDetail>) => {
-      for (const sub of elem.children) {
-        sub.dispatchEvent(new CustomEvent('animate', {'detail': e.detail}));
-      }
-    });
-
-    // XXX removeme
-    setInterval(() => {
-      elem.dispatchEvent(new CustomEvent('animate', {'detail': {'name': 'fire'}}));
-    }, 3250);
-
-    return elem;
+    return new LayeredTile(this.width, this.height, tiles);
   }
 }

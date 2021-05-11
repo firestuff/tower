@@ -13,7 +13,7 @@ export class Layer {
   }
 
   add_tile(tile_factory: TileFactory): HTMLElement {
-    const elem = tile_factory.get_elem(this.#tileset);
+    const elem = tile_factory.build(this.#tileset).get_elem();
     elem.style.zIndex = `${this.#level}`;
     return elem;
   }
