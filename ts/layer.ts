@@ -2,20 +2,20 @@ import { Tile } from './tile.js';
 import { TileFactory } from './tile_factory.js';
 
 export class Layer {
-  #level: number;
-  #tileset: string;
+  level: number;
+  tileset: string;
 
   set_level(level: number) {
-    this.#level = level;
+    this.level = level;
   }
 
   set_tileset(tileset: string) {
-    this.#tileset = tileset;
+    this.tileset = tileset;
   }
 
-  add_tile(tile_factory: TileFactory): Tile {
-    const tile = tile_factory.build(this.#tileset);
-    tile.elem.style.zIndex = `${this.#level}`;
+  add_tile(tile_factory: TileFactory, y: number): Tile {
+    const tile = tile_factory.build(this.tileset);
+    tile.elem.style.zIndex = `${this.level + y}`;
     return tile;
   }
 }
