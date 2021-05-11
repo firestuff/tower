@@ -77,7 +77,7 @@ export function main() {
     const tower = grid.add_tile(tiles.TOWER_FIREBALL1, 30, 18);
     setInterval(() => {
         tower.play('fire');
-        grid.add_tile(new ProjectileTileFactory(tiles.FIREBALL), 31, 17);
+        grid.add_tile(new ProjectileTileFactory(tiles.FIREBALL, -20, 5, 5, 1.5), 31, 17);
     }, 3250);
 }
 ;
