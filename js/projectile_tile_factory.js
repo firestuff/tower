@@ -1,5 +1,8 @@
 import { LayeredTileFactory } from './layered_tile_factory.js';
 import { TileFactory } from './tile_factory.js';
+function get_distance(x, y) {
+    return Math.sqrt(x ** 2 + y ** 2);
+}
 export class ProjectileTileFactory extends TileFactory {
     constructor(tile_factory, target_relative_x, target_relative_y, spin, speed, loft) {
         super(tile_factory.layer_name, tile_factory.width, tile_factory.height);
@@ -10,8 +13,17 @@ export class ProjectileTileFactory extends TileFactory {
         this.speed = speed;
         this.loft = loft;
         const copy = tile_factory.copy();
-        const distance = Math.sqrt(target_relative_x ** 2 + target_relative_y ** 2);
-        console.log(distance);
+        const top = Math.min(0, target_relative_y) - loft;
+        let h1_distance = get_distance(target_relative_x / 2, top);
+        let h2_distance = get_distance(target_relative_x / 2, target_relative_y - top);
+        let total_distance = h1_distance + h2_distance;
+        let vertex_offset = h1_distance / total_distance;
+        for (let i = 0; i < 5; i++) {
+            h1_distance = get_distance(target_relative_x * vertex_offset, top);
+            h2_distance = get_distance(target_relative_x * (1 - vertex_offset), target_relative_y - top);
+            total_distance = h1_distance + h2_distance;
+            vertex_offset = h1_distance / total_distance;
+        }
         copy.add_animation('launch-x', [
             {
                 'offset': 0.0,
@@ -22,10 +34,10 @@ export class ProjectileTileFactory extends TileFactory {
             {
                 'offset': 1.0,
                 'left': `${target_relative_x / tile_factory.width * 100}%`,
-                'transform': `rotate(${Math.sign(target_relative_x) * distance * spin * 10}deg)`,
+                'transform': `rotate(${Math.sign(target_relative_x) * total_distance * spin * 10}deg)`,
             },
         ], {
-            'duration': distance / speed * 100,
+            'duration': total_distance / speed * 100,
             'iterations': 1,
         });
         copy.add_animation('launch-y', [
@@ -35,16 +47,16 @@ export class ProjectileTileFactory extends TileFactory {
                 'top': '0',
             },
             {
-                'offset': 0.50 - Math.abs(target_relative_y / distance * 0.50),
+                'offset': vertex_offset,
                 'easing': 'cubic-bezier(0.33, 0.00, 0.66, 0.33)',
-                'top': `${((-1 * loft / tile_factory.height) + ((target_relative_y / distance) * (loft / tile_factory.height))) * 100}%`,
+                'top': `${top / tile_factory.height * 100}%`,
             },
             {
                 'offset': 1.0,
                 'top': `${target_relative_y / tile_factory.height * 100}%`,
             },
         ], {
-            'duration': distance / speed * 100,
+            'duration': total_distance / speed * 100,
             'iterations': 1,
         });
         this.tile_factory = new LayeredTileFactory([copy]);

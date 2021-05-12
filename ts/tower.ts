@@ -86,10 +86,10 @@ export function main() {
       return Math.random() * (max - min) + min;
   }
 
-  const tower = grid.add_tile(tiles.TOWER_FIREBALL1, 30, 18);
+  const tower = grid.add_tile(tiles.TOWER_FIREBALL1, 30, 28);
   setInterval(() => {
     tower.play('fire');
-    grid.add_tile(new ProjectileTileFactory(tiles.FIREBALL, rand(-20, 20), rand(-10, 20), 5, 1.5, 10), 31, 17);
+    grid.add_tile(new ProjectileTileFactory(tiles.FIREBALL, rand(-20, 20), rand(-10, 20), 5, 1.5, 5), 31, 27);
   }, 3250);
 };
 
