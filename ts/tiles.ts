@@ -1,4 +1,5 @@
 import { LayeredTileFactory } from './layered_tile_factory.js';
+import { SequenceTileFactory } from './sequence_tile_factory.js';
 import { SimpleTileFactory } from './simple_tile_factory.js';
 
 // Straig
@@ -75,3 +76,14 @@ export const TOWER_FIREBALL1 = new LayeredTileFactory([
 ]);
 
 export const FIREBALL = new SimpleTileFactory('projectile', 2, 2, 'fireball');
+
+export const FIREBALL_IMPACT = new SequenceTileFactory([
+  new SimpleTileFactory('surface', 4, 4, 'fireball-impact1'),
+  new SimpleTileFactory('surface', 4, 4, 'fireball-impact2'),
+  new SimpleTileFactory('surface', 4, 4, 'fireball-impact3'),
+  new SimpleTileFactory('surface', 4, 4, 'fireball-impact4'),
+  new SimpleTileFactory('surface', 4, 4, 'fireball-impact5'),
+  new SimpleTileFactory('surface', 4, 4, 'fireball-impact6'),
+  new SimpleTileFactory('surface', 4, 4, 'fireball-impact7'),
+  new SimpleTileFactory('surface', 4, 4, 'fireball-impact8'),
+], 100, false);

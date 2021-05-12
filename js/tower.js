@@ -82,6 +82,7 @@ export function main() {
         tower.play('fire');
         grid.add_tile(new ProjectileTileFactory(tiles.FIREBALL, rand(-20, 20), rand(-10, 20), 5, 1.5, 5), 31, 27);
     }, 3250);
+    grid.add_tile(tiles.FIREBALL_IMPACT, 15, 15);
 }
 ;
 main();
