@@ -83,16 +83,21 @@ export function main() {
   grid.add_tile(tiles.BRIDGE_LR, 46, 10);
 
   function rand(min: number, max: number): number {
-      return Math.random() * (max - min) + min;
+      return Math.round(Math.random() * (max - min) + min);
   }
 
   const tower = grid.add_tile(tiles.TOWER_FIREBALL1, 30, 28);
   setInterval(() => {
     tower.play('fire');
-    grid.add_tile(new ProjectileTileFactory(tiles.FIREBALL, rand(-20, 20), rand(-10, 20), 5, 1.5, 5), 31, 27);
+    const target_relative_x = rand(-20, 20);
+    const target_relative_y = rand(-10, 20);
+    const factory = new ProjectileTileFactory(tiles.FIREBALL, target_relative_x, target_relative_y, 5, 1.5, 5);
+    grid.add_tile(factory, 31, 27);
+    setTimeout(() => {
+      console.log('impact!', 31 + target_relative_x, 27 + target_relative_y);
+      grid.add_tile(tiles.FIREBALL_IMPACT, 31 + target_relative_x, 27 + target_relative_y);
+    }, factory.duration);
   }, 3250);
-
-  grid.add_tile(tiles.FIREBALL_IMPACT, 15, 15);
 };
 
 main();

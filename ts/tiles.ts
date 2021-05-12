@@ -78,12 +78,12 @@ export const TOWER_FIREBALL1 = new LayeredTileFactory([
 export const FIREBALL = new SimpleTileFactory('projectile', 2, 2, 'fireball');
 
 export const FIREBALL_IMPACT = new SequenceTileFactory([
-  new SimpleTileFactory('surface', 4, 4, 'fireball-impact1'),
-  new SimpleTileFactory('surface', 4, 4, 'fireball-impact2'),
-  new SimpleTileFactory('surface', 4, 4, 'fireball-impact3'),
-  new SimpleTileFactory('surface', 4, 4, 'fireball-impact4'),
-  new SimpleTileFactory('surface', 4, 4, 'fireball-impact5'),
-  new SimpleTileFactory('surface', 4, 4, 'fireball-impact6'),
-  new SimpleTileFactory('surface', 4, 4, 'fireball-impact7'),
-  new SimpleTileFactory('surface', 4, 4, 'fireball-impact8'),
-], 100, false);
+  new SimpleTileFactory('surface', 2, 2, 'fireball-impact1'),
+  new SimpleTileFactory('surface', 2, 2, 'fireball-impact2'),
+  new SimpleTileFactory('surface', 2, 2, 'fireball-impact3'),
+  new SimpleTileFactory('surface', 2, 2, 'fireball-impact4'),
+  new SimpleTileFactory('surface', 2, 2, 'fireball-impact5'),
+  new SimpleTileFactory('surface', 2, 2, 'fireball-impact6'),
+  new SimpleTileFactory('surface', 2, 2, 'fireball-impact7'),
+  new SimpleTileFactory('surface', 2, 2, 'fireball-impact8'),
+], 50, false);

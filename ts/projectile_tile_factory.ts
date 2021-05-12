@@ -14,6 +14,7 @@ export class ProjectileTileFactory extends TileFactory {
   spin: number;
   speed: number;
   loft: number;
+  duration: number;
 
   tile_factory: TileFactory;
 
@@ -41,6 +42,8 @@ export class ProjectileTileFactory extends TileFactory {
       vertex_offset = h1_distance / total_distance;
     }
 
+    this.duration = total_distance / speed * 100;
+
     copy.add_animation(
       'launch-x',
       [
@@ -57,7 +60,7 @@ export class ProjectileTileFactory extends TileFactory {
         },
       ],
       {
-        'duration': total_distance / speed * 100,
+        'duration': this.duration,
         'iterations': 1,
       },
     );
@@ -81,7 +84,7 @@ export class ProjectileTileFactory extends TileFactory {
         },
       ],
       {
-        'duration': total_distance / speed * 100,
+        'duration': this.duration,
         'iterations': 1,
       },
     );
