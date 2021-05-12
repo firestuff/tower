@@ -94,7 +94,6 @@ export function main() {
     const factory = new ProjectileTileFactory(tiles.FIREBALL, target_relative_x, target_relative_y, 5, 1.5, 5);
     grid.add_tile(factory, 31, 27);
     setTimeout(() => {
-      console.log('impact!', 31 + target_relative_x, 27 + target_relative_y);
       grid.add_tile(tiles.FIREBALL_IMPACT, 31 + target_relative_x, 27 + target_relative_y);
     }, factory.duration);
   }, 3250);
