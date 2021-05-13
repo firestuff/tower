@@ -13,7 +13,7 @@ export class SimpleTileFactory extends AnimatableTileFactory {
     return new SimpleTile(
       this.width,
       this.height,
-      `images/${this.name.replace('{tileset}', tileset)}.svg`,
+      `images/${this.name.replace('{tileset}', tileset)}`,
       this.animations,
     );
   }

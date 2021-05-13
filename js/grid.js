@@ -4,6 +4,7 @@ export class Grid {
         this.layers = new Map();
         this.prnt = prnt;
         this.prnt.style.display = 'grid';
+        this.prnt.style.position = 'relative';
     }
     set_size(x, y) {
         this.height = y;

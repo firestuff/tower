@@ -1,8 +1,9 @@
+import { AnimatableTile } from './animatable_tile.js';
 import { Tile } from './tile.js';
 
-export class SequenceTile extends Tile {
-  constructor(width: number, height: number, tiles: Tile[], delay: number, repeat: boolean) {
-    super(width, height);
+export class SequenceTile extends AnimatableTile {
+  constructor(width: number, height: number, animations: Map<string, [Keyframe[], object]>, tiles: Tile[], delay: number, repeat: boolean) {
+    super(width, height, animations);
 
     this.elem.style.position = 'relative';
 
