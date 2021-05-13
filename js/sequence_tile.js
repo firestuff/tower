@@ -13,21 +13,21 @@ export class SequenceTile extends AnimatableTile {
             tile.elem.style.position = 'absolute';
             tile.elem.style.top = '0';
             tile.elem.style.left = '0';
-            tile.elem.style.opacity = '0.0';
+            tile.elem.style.visibility = 'hidden';
             animation = tile.elem.animate([
                 {
                     'offset': 0,
                     'easing': 'step-end',
-                    'opacity': '0.0',
+                    'visibility': 'hidden',
                 },
                 {
                     'offset': i * tile_chunk,
                     'easing': 'step-end',
-                    'opacity': '1.0',
+                    'visibility': 'visible',
                 },
                 {
                     'offset': (i + 1) * tile_chunk,
-                    'opacity': '0.0',
+                    'visibility': 'hidden',
                 },
             ], {
                 'duration': tiles.length * delay,
