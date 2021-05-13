@@ -13,21 +13,24 @@ export class SequenceTile extends AnimatableTile {
             tile.elem.style.position = 'absolute';
             tile.elem.style.top = '0';
             tile.elem.style.left = '0';
-            tile.elem.style.zIndex = `${i}`;
             tile.elem.style.opacity = '0.0';
             animation = tile.elem.animate([
                 {
-                    'offset': i * tile_chunk,
-                    'easing': 'step-start',
+                    'offset': 0,
+                    'easing': 'step-end',
                     'opacity': '0.0',
                 },
                 {
-                    'offset': (i + 1) * tile_chunk,
-                    'easing': 'step-start',
+                    'offset': i * tile_chunk,
+                    'easing': 'step-end',
                     'opacity': '1.0',
                 },
+                {
+                    'offset': (i + 1) * tile_chunk,
+                    'opacity': '0.0',
+                },
             ], {
-                'duration': delay * (tiles.length + 1),
+                'duration': tiles.length * delay,
                 'iterations': repeat ? Infinity : 1,
             });
         }
