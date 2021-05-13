@@ -24,7 +24,7 @@ export function main() {
 
   const grid = new Grid(real);
   grid.set_size(70, 56);
-  grid.set_tileset('tropical');
+  grid.set_tileset('wasteland');
   grid.set_layers(['road', 'water', 'bridge', 'surface', 'projectile']);
 
   grid.add_tile(tiles.ROAD_TB, 20, 46);

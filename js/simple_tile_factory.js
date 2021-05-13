@@ -6,7 +6,7 @@ export class SimpleTileFactory extends AnimatableTileFactory {
         this.name = name;
     }
     build(tileset) {
-        return new SimpleTile(this.width, this.height, `images/${tileset}/${this.name}.svg`, this.animations);
+        return new SimpleTile(this.width, this.height, `images/${this.name.replace('{tileset}', tileset)}.svg`, this.animations);
     }
     copy() {
         const stf = new SimpleTileFactory(this.layer_name, this.width, this.height, this.name);

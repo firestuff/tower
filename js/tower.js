@@ -20,7 +20,7 @@ export function main() {
     real.style.left = 'calc((-10 / 70) * min(140vw, 175vh))';
     const grid = new Grid(real);
     grid.set_size(70, 56);
-    grid.set_tileset('tropical');
+    grid.set_tileset('wasteland');
     grid.set_layers(['road', 'water', 'bridge', 'surface', 'projectile']);
     grid.add_tile(tiles.ROAD_TB, 20, 46);
     grid.add_tile(tiles.ROAD_BL, 18, 40);
@@ -85,7 +85,6 @@ export function main() {
         const factory = new ProjectileTileFactory(tiles.FIREBALL, target_relative_x, target_relative_y, 5, 1.5, 5);
         grid.add_tile(factory, 31, 27);
         setTimeout(() => {
-            console.log('impact!', 31 + target_relative_x, 27 + target_relative_y);
             grid.add_tile(tiles.FIREBALL_IMPACT, 31 + target_relative_x, 27 + target_relative_y);
         }, factory.duration);
     }, 3250);
