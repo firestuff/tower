@@ -88,15 +88,222 @@ export const FIREBALL_IMPACT = new SequenceTileFactory([
   new SimpleTileFactory('surface', 2, 2, 'tower/fireball-impact8.svg'),
 ], 50, false);
 
-export const GREENAXE_WALK1 = new SequenceTileFactory([
-  new SimpleTileFactory('surface', 3, 3, 'monster/greenaxe-walk1.png'),
-  new SimpleTileFactory('surface', 3, 3, 'monster/greenaxe-walk2.png'),
-  new SimpleTileFactory('surface', 3, 3, 'monster/greenaxe-walk3.png'),
-  new SimpleTileFactory('surface', 3, 3, 'monster/greenaxe-walk4.png'),
-  new SimpleTileFactory('surface', 3, 3, 'monster/greenaxe-walk5.png'),
-  new SimpleTileFactory('surface', 3, 3, 'monster/greenaxe-walk6.png'),
-  new SimpleTileFactory('surface', 3, 3, 'monster/greenaxe-walk7.png'),
-  new SimpleTileFactory('surface', 3, 3, 'monster/greenaxe-walk8.png'),
-  new SimpleTileFactory('surface', 3, 3, 'monster/greenaxe-walk9.png'),
-  new SimpleTileFactory('surface', 3, 3, 'monster/greenaxe-walk10.png'),
-], 100, true);
+const greenaxe_axe = new SimpleTileFactory('surface', 3, 3, 'monster/greenaxe/axe.svg');
+greenaxe_axe.add_animation(
+  'walk',
+  [
+    {
+      'transform': 'scaleX(1.01) scaleY(1.014) translateX(-0.45%) translateY(0.01%) rotate(0.1deg)',
+    },
+    {
+      'transform': 'scaleX(1.01) scaleY(1.014) translateX(0.56%) translateY(3.48%) rotate(13.7deg)',
+    },
+    {
+      'transform': 'scaleX(1.01) scaleY(1.014) translateX(0.67%) translateY(7.15%) rotate(27.1deg)',
+    },
+    {
+      'transform': 'scaleX(1.01) scaleY(1.014) translateX(0%) translateY(10.49%) rotate(40.5deg)',
+    },
+    {
+      'transform': 'scaleX(1.01) scaleY(1.014) translateX(-1.45%) translateY(13.57%) rotate(53.9deg)',
+    },
+    {
+      'transform': 'scaleX(1.01) scaleY(1.014) translateX(-3.8%) translateY(15.99%) rotate(67.2deg)',
+    },
+  ],
+  {
+    'duration': 500,
+    'iterations': Infinity,
+    'direction': 'alternate',
+  },
+);
+
+const greenaxe_rightleg = new SimpleTileFactory('surface', 3, 3, 'monster/greenaxe/rightleg.svg');
+greenaxe_rightleg.add_animation(
+  'walk',
+  [
+    {
+      'transform': 'rotate(4.6deg) scaleX(1.025) scaleY(1) translateX(3.11%) translateY(1%)',
+    },
+    {
+      'transform': 'rotate(3.5deg) scaleX(1.01) scaleY(0.996) translateX(2.82%) translateY(1.23%)',
+    },
+    {
+      'transform': 'rotate(-7.8deg) scaleX(1.01) scaleY(0.996) translateX(-2.81%) translateY(-1.5%)',
+    },
+    {
+      'transform': 'rotate(-12.9deg) scaleX(1.01) scaleY(0.996) translateX(-4.79%) translateY(-2.99%)',
+    },
+    {
+      'transform': 'rotate(-19.4deg) scaleX(1.01) scaleY(0.996) translateX(-7.35%) translateY(-5.29%)',
+    },
+    {
+      'transform': 'rotate(-26.4deg) scaleX(1.01) scaleY(0.996) translateX(-9.77%) translateY(-8.15%)',
+    },
+  ],
+  {
+    'duration': 500,
+    'iterations': Infinity,
+    'direction': 'alternate',
+  },
+);
+
+const greenaxe_leftleg = new SimpleTileFactory('surface', 3, 3, 'monster/greenaxe/leftleg.svg');
+greenaxe_leftleg.add_animation(
+  'walk',
+  [
+    {
+      'transform': 'rotate(-1deg) scaleX(1.024) scaleY(1.005) translateX(-0.7%) translateY(-0.16%)',
+    },
+    {
+      'transform': 'rotate(2.5deg) scaleX(1.019) scaleY(1.005) translateX(0.64%) translateY(-0.15%)',
+    },
+    {
+      'transform': 'rotate(9deg) scaleX(1.019) scaleY(1.005) translateX(3.52%) translateY(-0.77%)',
+    },
+    {
+      'transform': 'rotate(14.5deg) scaleX(1) scaleY(1) translateX(6.09%) translateY(-1.28%)',
+    },
+    {
+      'transform': 'rotate(21.9deg) scaleX(1) scaleY(1) translateX(9.26%) translateY(-2.71%)',
+    },
+    {
+      'transform': 'rotate(25.2deg) scaleX(1) scaleY(1) translateX(10.09%) translateY(-3.32%)',
+    },
+  ],
+  {
+    'duration': 500,
+    'iterations': Infinity,
+    'direction': 'alternate',
+  },
+);
+
+const greenaxe_torso = new SimpleTileFactory('surface', 3, 3, 'monster/greenaxe/torso.svg');
+greenaxe_torso.add_animation(
+  'walk',
+  [
+    {
+      'transform': 'rotate(1.3deg) scaleX(1.021) scaleY(1) translateX(0.61%) translateY(0.67%)',
+    },
+    {
+      'transform': 'rotate(2.3deg) scaleX(1.018) scaleY(0.992) translateX(0.81%) translateY(1%)',
+    },
+    {
+      'transform': 'rotate(2.2deg) scaleX(1.015) scaleY(0.996) translateX(0.8%) translateY(1.02%)',
+    },
+    {
+      'transform': 'rotate(1.8deg) scaleX(1.018) scaleY(0.993) translateX(0.64%) translateY(0.95%)',
+    },
+    {
+      'transform': 'rotate(1.8deg) scaleX(1.018) scaleY(0.993) translateX(0.64%) translateY(0.95%)',
+    },
+    {
+      'transform': 'rotate(1.8deg) scaleX(1.018) scaleY(0.993) translateX(0.64%) translateY(0.95%)',
+    },
+  ],
+  {
+    'duration': 500,
+    'iterations': Infinity,
+    'direction': 'alternate',
+  },
+);
+
+const greenaxe_head = new SimpleTileFactory('surface', 3, 3, 'monster/greenaxe/head.svg');
+greenaxe_head.add_animation(
+  'walk',
+  [
+    {
+      'transform': 'rotate(-0.8deg) scaleX(1.027) scaleY(0.993) translateX(0.44%) translateY(-0.35%)',
+    },
+    {
+      'transform': 'rotate(-0.6deg) scaleX(1.033) scaleY(0.993) translateX(0.9%) translateY(-0.35%)',
+    },
+    {
+      'transform': 'rotate(0.8deg) scaleX(1.033) scaleY(0.993) translateX(0.9%) translateY(-0.35%)',
+    },
+    {
+      'transform': 'rotate(2.1deg) scaleX(1.033) scaleY(0.993) translateX(0.9%) translateY(-0.31%)',
+    },
+    {
+      'transform': 'rotate(3.3deg) scaleX(1.033) scaleY(0.993) translateX(0.93%) translateY(-0.29%)',
+    },
+    {
+      'transform': 'rotate(4.4deg) scaleX(1.028) scaleY(0.993) translateX(0.98%) translateY(-0.32%)',
+    },
+  ],
+  {
+    'duration': 500,
+    'iterations': Infinity,
+    'direction': 'alternate',
+  },
+);
+
+const greenaxe_rightarm = new SimpleTileFactory('surface', 3, 3, 'monster/greenaxe/rightarm.svg');
+greenaxe_rightarm.add_animation(
+  'walk',
+  [
+    {
+      'transform': 'rotate(1.1deg) scaleX(1) scaleY(1.009) translateX(0.12%) translateY(0.54%)',
+    },
+    {
+      'transform': 'rotate(15.3deg) scaleX(1.006) scaleY(1.003) translateX(2.29%) translateY(4.11%)',
+    },
+    {
+      'transform': 'rotate(28.8deg) scaleX(1.02) scaleY(0.99) translateX(4.97%) translateY(6.91%)',
+    },
+    {
+      'transform': 'rotate(42.7deg) scaleX(1.02) scaleY(0.985) translateX(8.07%) translateY(8.95%)',
+    },
+    {
+      'transform': 'rotate(56.1deg) scaleX(1.024) scaleY(0.99) translateX(11.37%) translateY(9.95%)',
+    },
+    {
+      'transform': 'rotate(69.9deg) scaleX(1.017) scaleY(0.983) translateX(14.8%) translateY(10.43%)',
+    },
+  ],
+  {
+    'duration': 500,
+    'iterations': Infinity,
+    'direction': 'alternate',
+  },
+);
+
+const greenaxe_leftarm = new SimpleTileFactory('surface', 3, 3, 'monster/greenaxe/leftarm.svg');
+greenaxe_leftarm.add_animation(
+  'walk',
+  [
+    {
+      'transform': 'rotate(0deg) scaleX(1) scaleY(1) translateX(0%) translateY(0%)',
+    },
+    {
+      'transform': ' rotate(0deg) scaleX(1) scaleY(1) translateX(0%) translateY(0%)',
+    },
+    {
+      'transform': 'rotate(0.6deg) scaleX(1) scaleY(1) translateX(2.51%) translateY(2.89%)',
+    },
+    {
+      'transform': 'rotate(-7.6deg) scaleX(1) scaleY(1) translateX(2.51%) translateY(2.89%)',
+    },
+    {
+      'transform': 'rotate(-13.7deg) scaleX(1) scaleY(1) translateX(3.42%) translateY(5.13%)',
+    },
+    {
+      'transform': 'rotate(-20.7deg) scaleX(1) scaleY(1) translateX(3.62%) translateY(6.13%)',
+    },
+  ],
+  {
+    'duration': 500,
+    'iterations': Infinity,
+    'direction': 'alternate',
+  },
+);
+
+export const GREENAXE = new LayeredTileFactory([
+  greenaxe_leftarm,
+  greenaxe_leftleg,
+  greenaxe_rightleg,
+  greenaxe_torso,
+  greenaxe_head,
+  greenaxe_axe,
+  greenaxe_rightarm,
+]);

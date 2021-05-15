@@ -88,7 +88,8 @@ export function main() {
             grid.add_tile(tiles.FIREBALL_IMPACT, 31 + target_relative_x, 27 + target_relative_y);
         }, factory.duration);
     }, 3250);
-    const greenaxe = grid.add_tile(tiles.GREENAXE_WALK1, 30, 16);
+    const greenaxe = grid.add_tile(tiles.GREENAXE, 30, 16);
+    greenaxe.play('walk');
     greenaxe.elem.style.transitionProperty = 'top,left';
     greenaxe.elem.style.transitionDuration = '25s';
     greenaxe.elem.style.transitionTimingFunction = 'linear';
