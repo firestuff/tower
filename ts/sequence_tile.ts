@@ -1,9 +1,10 @@
 import { AnimatableTile } from './animatable_tile.js';
+import { Mask } from './mask.js';
 import { Tile } from './tile.js';
 
 export class SequenceTile extends AnimatableTile {
-  constructor(width: number, height: number, animations: Map<string, [Keyframe[], object]>, tiles: Tile[], delay: number, repeat: boolean) {
-    super(width, height, animations);
+  constructor(width: number, height: number, masks: Map<string, Mask>, animations: Map<string, [Keyframe[], object]>, tiles: Tile[], delay: number, repeat: boolean) {
+    super(width, height, masks, animations);
 
     this.elem.style.position = 'relative';
 

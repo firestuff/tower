@@ -5,11 +5,8 @@ export class Layer {
   level: number;
   tileset: string;
 
-  set_level(level: number) {
+  constructor(level: number, tileset: string) {
     this.level = level;
-  }
-
-  set_tileset(tileset: string) {
     this.tileset = tileset;
   }
 

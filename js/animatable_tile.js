@@ -1,7 +1,7 @@
 import { Tile } from './tile.js';
 export class AnimatableTile extends Tile {
-    constructor(width, height, animations) {
-        super(width, height);
+    constructor(width, height, masks, animations) {
+        super(width, height, masks);
         this.animations = animations;
     }
     play(name) {

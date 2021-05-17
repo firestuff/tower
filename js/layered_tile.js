@@ -1,7 +1,7 @@
 import { Tile } from './tile.js';
 export class LayeredTile extends Tile {
-    constructor(width, height, tiles) {
-        super(width, height);
+    constructor(width, height, masks, tiles) {
+        super(width, height, masks);
         this.tiles = [];
         this.elem.style.position = 'relative';
         for (let i = 0; i < tiles.length; i++) {

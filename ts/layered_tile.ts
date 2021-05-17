@@ -1,10 +1,11 @@
+import { Mask } from './mask.js';
 import { Tile } from './tile.js';
 
 export class LayeredTile extends Tile {
   tiles: Tile[];
 
-  constructor(width: number, height: number, tiles: Tile[]) {
-    super(width, height);
+  constructor(width: number, height: number, masks: Map<string, Mask>, tiles: Tile[]) {
+    super(width, height, masks);
     this.tiles = [];
 
     this.elem.style.position = 'relative';

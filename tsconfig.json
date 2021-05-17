@@ -20,6 +20,7 @@
     "ts/layered_tile.ts",
     "ts/layered_tile_factory.ts",
     "ts/layer.ts",
+    "ts/mask.ts",
     "ts/projectile_tile_factory.ts",
     "ts/sequence_tile.ts",
     "ts/sequence_tile_factory.ts",

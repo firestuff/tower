@@ -12,7 +12,7 @@ export class SequenceTileFactory extends AnimatableTileFactory {
         for (const tile_factory of this.tile_factories) {
             tiles.push(tile_factory.build(tileset));
         }
-        return new SequenceTile(this.width, this.height, this.animations, tiles, this.delay, this.repeat);
+        return new SequenceTile(...this.animatable_tile_args(), tiles, this.delay, this.repeat);
     }
     copy() {
         return new SequenceTileFactory(this.tile_factories, this.delay, this.repeat);

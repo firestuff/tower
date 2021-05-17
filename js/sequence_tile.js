@@ -1,7 +1,7 @@
 import { AnimatableTile } from './animatable_tile.js';
 export class SequenceTile extends AnimatableTile {
-    constructor(width, height, animations, tiles, delay, repeat) {
-        super(width, height, animations);
+    constructor(width, height, masks, animations, tiles, delay, repeat) {
+        super(width, height, masks, animations);
         this.elem.style.position = 'relative';
         const tile_chunk = 1 / tiles.length;
         let animation = null;

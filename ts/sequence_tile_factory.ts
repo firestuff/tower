@@ -25,7 +25,7 @@ export class SequenceTileFactory extends AnimatableTileFactory {
       tiles.push(tile_factory.build(tileset));
     }
 
-    return new SequenceTile(this.width, this.height, this.animations, tiles, this.delay, this.repeat);
+    return new SequenceTile(...this.animatable_tile_args(), tiles, this.delay, this.repeat);
   }
 
   copy(): SequenceTileFactory {

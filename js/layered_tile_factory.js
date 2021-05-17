@@ -10,7 +10,7 @@ export class LayeredTileFactory extends TileFactory {
         for (const tile_factory of this.tile_factories) {
             tiles.push(tile_factory.build(tileset));
         }
-        return new LayeredTile(this.width, this.height, tiles);
+        return new LayeredTile(...this.tile_args(), tiles);
     }
     copy() {
         return new LayeredTileFactory(this.tile_factories);

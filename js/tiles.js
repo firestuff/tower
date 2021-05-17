@@ -1,35 +1,139 @@
 import { LayeredTileFactory } from './layered_tile_factory.js';
+import { Mask } from './mask.js';
 import { SequenceTileFactory } from './sequence_tile_factory.js';
 import { SimpleTileFactory } from './simple_tile_factory.js';
 // Straig
-export const ROAD_LR = new SimpleTileFactory('road', 6, 4, '{tileset}/road-lr.svg');
-export const ROAD_TB = new SimpleTileFactory('road', 4, 6, '{tileset}/road-tb.svg');
+export const ROAD_LR = new SimpleTileFactory('road', 12, 8, '{tileset}/road-lr.svg');
+ROAD_LR.add_mask('walkable', Mask.from_string(`
+............
+............
+XXXXXXXXXXXX
+XXXXXXXXXXXX
+XXXXXXXXXXXX
+XXXXXXXXXXXX
+............
+............
+`));
+export const ROAD_TB = new SimpleTileFactory('road', 8, 12, '{tileset}/road-tb.svg');
+ROAD_TB.add_mask('walkable', Mask.from_string(`
+..XXXX..
+..XXXX..
+..XXXX..
+..XXXX..
+..XXXX..
+..XXXX..
+..XXXX..
+..XXXX..
+..XXXX..
+..XXXX..
+..XXXX..
+..XXXX..
+..XXXX..
+`));
 // Elbow
-export const ROAD_BL = new SimpleTileFactory('road', 6, 6, '{tileset}/road-bl.svg');
-export const ROAD_BR = new SimpleTileFactory('road', 6, 6, '{tileset}/road-br.svg');
-export const ROAD_TL = new SimpleTileFactory('road', 6, 6, '{tileset}/road-tl.svg');
-export const ROAD_TR = new SimpleTileFactory('road', 6, 6, '{tileset}/road-tr.svg');
+export const ROAD_BL = new SimpleTileFactory('road', 12, 12, '{tileset}/road-bl.svg');
+ROAD_BL.add_mask('walkable', Mask.from_string(`
+............
+............
+XXX.........
+XXXXX.......
+XXXXXXX.....
+XXXXXXXX....
+..XXXXXX....
+....XXXXX...
+.....XXXX...
+.....XXXXX..
+......XXXX..
+......XXXX..
+`));
+export const ROAD_BR = new SimpleTileFactory('road', 12, 12, '{tileset}/road-br.svg');
+ROAD_BR.add_mask('walkable', Mask.from_string(`
+............
+............
+.........XXX
+.......XXXXX
+.....XXXXXXX
+....XXXXXXXX
+....XXXXXX..
+...XXXXX....
+...XXXX.....
+..XXXXX.....
+..XXXX......
+..XXXX......
+`));
+export const ROAD_TL = new SimpleTileFactory('road', 12, 12, '{tileset}/road-tl.svg');
+ROAD_TL.add_mask('walkable', Mask.from_string(`
+......XXXX..
+......XXXX..
+.....XXXXX..
+.....XXXX...
+....XXXXX...
+..XXXXXX....
+XXXXXXXX....
+XXXXXXX.....
+XXXXX.......
+XXX.........
+............
+............
+`));
+export const ROAD_TR = new SimpleTileFactory('road', 12, 12, '{tileset}/road-tr.svg');
+ROAD_TR.add_mask('walkable', Mask.from_string(`
+..XXXX......
+..XXXX......
+..XXXXX.....
+...XXXX.....
+...XXXXX....
+....XXXXXX..
+....XXXXXXXX
+.....XXXXXXX
+.......XXXXX
+.........XXX
+............
+............
+`));
 // T
-export const ROAD_BLR = new SimpleTileFactory('road', 8, 6, '{tileset}/road-blr.svg');
-export const ROAD_TLR = new SimpleTileFactory('road', 8, 6, '{tileset}/road-tlr.svg');
-export const ROAD_LTB = new SimpleTileFactory('road', 6, 8, '{tileset}/road-ltb.svg');
-export const ROAD_RTB = new SimpleTileFactory('road', 6, 8, '{tileset}/road-rtb.svg');
+export const ROAD_BLR = new SimpleTileFactory('road', 16, 12, '{tileset}/road-blr.svg');
+// TODO: add_mask(walkable)
+export const ROAD_TLR = new SimpleTileFactory('road', 16, 12, '{tileset}/road-tlr.svg');
+// TODO: add_mask(walkable)
+export const ROAD_LTB = new SimpleTileFactory('road', 12, 16, '{tileset}/road-ltb.svg');
+// TODO: add_mask(walkable)
+export const ROAD_RTB = new SimpleTileFactory('road', 12, 16, '{tileset}/road-rtb.svg');
+// TODO: add_mask(walkable)
 // +
-export const ROAD_TBLR = new SimpleTileFactory('road', 8, 8, '{tileset}/road-tblr.svg');
+export const ROAD_TBLR = new SimpleTileFactory('road', 16, 16, '{tileset}/road-tblr.svg');
+ROAD_TBLR.add_mask('walkable', Mask.from_string(`
+......XXXX......
+......XXXX......
+......XXXX......
+.....XXXXXX.....
+....XXXXXXXX....
+...XXXXXXXXXX...
+XXXXXXXXXXXXXXXX
+XXXXXXXXXXXXXXXX
+XXXXXXXXXXXXXXXX
+XXXXXXXXXXXXXXXX
+...XXXXXXXXXX...
+....XXXXXXXX....
+.....XXXXXX.....
+......XXXX......
+......XXXX......
+......XXXX......
+`));
 // Tower base
-export const EMPTY = new SimpleTileFactory('road', 4, 2, '{tileset}/empty.svg');
+export const EMPTY = new SimpleTileFactory('road', 8, 4, '{tileset}/empty.svg');
 // Straight
-export const RIVER_LR = new SimpleTileFactory('water', 6, 4, '{tileset}/river-lr.svg');
-export const RIVER_TB = new SimpleTileFactory('water', 4, 6, '{tileset}/river-tb.svg');
+export const RIVER_LR = new SimpleTileFactory('water', 12, 8, '{tileset}/river-lr.svg');
+export const RIVER_TB = new SimpleTileFactory('water', 8, 12, '{tileset}/river-tb.svg');
 // Elbow
-export const RIVER_BR = new SimpleTileFactory('water', 6, 6, '{tileset}/river-br.svg');
-export const RIVER_BL = new SimpleTileFactory('water', 6, 6, '{tileset}/river-bl.svg');
-export const RIVER_TR = new SimpleTileFactory('water', 6, 6, '{tileset}/river-tr.svg');
-export const RIVER_TL = new SimpleTileFactory('water', 6, 6, '{tileset}/river-tl.svg');
-export const BRIDGE_LR = new SimpleTileFactory('bridge', 6, 4, '{tileset}/bridge-lr.svg');
-const tower_fireball1_back = new SimpleTileFactory('surface', 4, 4, 'tower/fireball1-back.svg');
-const tower_fireball1 = new SimpleTileFactory('surface', 4, 4, 'tower/fireball1.svg');
-const tower_fireball1_front = new SimpleTileFactory('surface', 4, 4, 'tower/fireball1-front.svg');
+export const RIVER_BR = new SimpleTileFactory('water', 12, 12, '{tileset}/river-br.svg');
+export const RIVER_BL = new SimpleTileFactory('water', 12, 12, '{tileset}/river-bl.svg');
+export const RIVER_TR = new SimpleTileFactory('water', 12, 12, '{tileset}/river-tr.svg');
+export const RIVER_TL = new SimpleTileFactory('water', 12, 12, '{tileset}/river-tl.svg');
+export const BRIDGE_LR = new SimpleTileFactory('bridge', 12, 8, '{tileset}/bridge-lr.svg');
+const tower_fireball1_back = new SimpleTileFactory('surface', 8, 8, 'tower/fireball1-back.svg');
+const tower_fireball1 = new SimpleTileFactory('surface', 8, 8, 'tower/fireball1.svg');
+const tower_fireball1_front = new SimpleTileFactory('surface', 8, 8, 'tower/fireball1-front.svg');
 for (const tile_factory of [tower_fireball1_back, tower_fireball1_front]) {
     tile_factory.add_animation('fire', [
         {
@@ -56,18 +160,18 @@ export const TOWER_FIREBALL1 = new LayeredTileFactory([
     tower_fireball1,
     tower_fireball1_front,
 ]);
-export const FIREBALL = new SimpleTileFactory('projectile', 2, 2, 'tower/fireball.svg');
+export const FIREBALL = new SimpleTileFactory('projectile', 4, 4, 'tower/fireball.svg');
 export const FIREBALL_IMPACT = new SequenceTileFactory([
-    new SimpleTileFactory('surface', 2, 2, 'tower/fireball-impact1.svg'),
-    new SimpleTileFactory('surface', 2, 2, 'tower/fireball-impact2.svg'),
-    new SimpleTileFactory('surface', 2, 2, 'tower/fireball-impact3.svg'),
-    new SimpleTileFactory('surface', 2, 2, 'tower/fireball-impact4.svg'),
-    new SimpleTileFactory('surface', 2, 2, 'tower/fireball-impact5.svg'),
-    new SimpleTileFactory('surface', 2, 2, 'tower/fireball-impact6.svg'),
-    new SimpleTileFactory('surface', 2, 2, 'tower/fireball-impact7.svg'),
-    new SimpleTileFactory('surface', 2, 2, 'tower/fireball-impact8.svg'),
+    new SimpleTileFactory('surface', 4, 4, 'tower/fireball-impact1.svg'),
+    new SimpleTileFactory('surface', 4, 4, 'tower/fireball-impact2.svg'),
+    new SimpleTileFactory('surface', 4, 4, 'tower/fireball-impact3.svg'),
+    new SimpleTileFactory('surface', 4, 4, 'tower/fireball-impact4.svg'),
+    new SimpleTileFactory('surface', 4, 4, 'tower/fireball-impact5.svg'),
+    new SimpleTileFactory('surface', 4, 4, 'tower/fireball-impact6.svg'),
+    new SimpleTileFactory('surface', 4, 4, 'tower/fireball-impact7.svg'),
+    new SimpleTileFactory('surface', 4, 4, 'tower/fireball-impact8.svg'),
 ], 50, false);
-const greenaxe_axe = new SimpleTileFactory('surface', 3, 3, 'monster/greenaxe/axe.svg');
+const greenaxe_axe = new SimpleTileFactory('surface', 6, 6, 'monster/greenaxe/axe.svg');
 greenaxe_axe.add_animation('walk', [
     {
         'transform': 'scaleX(1.01) scaleY(1.014) translateX(-0.45%) translateY(0.01%) rotate(0.1deg)',
@@ -92,7 +196,7 @@ greenaxe_axe.add_animation('walk', [
     'iterations': Infinity,
     'direction': 'alternate',
 });
-const greenaxe_rightleg = new SimpleTileFactory('surface', 3, 3, 'monster/greenaxe/rightleg.svg');
+const greenaxe_rightleg = new SimpleTileFactory('surface', 6, 6, 'monster/greenaxe/rightleg.svg');
 greenaxe_rightleg.add_animation('walk', [
     {
         'transform': 'rotate(4.6deg) scaleX(1.025) scaleY(1) translateX(3.11%) translateY(1%)',
@@ -117,7 +221,7 @@ greenaxe_rightleg.add_animation('walk', [
     'iterations': Infinity,
     'direction': 'alternate',
 });
-const greenaxe_leftleg = new SimpleTileFactory('surface', 3, 3, 'monster/greenaxe/leftleg.svg');
+const greenaxe_leftleg = new SimpleTileFactory('surface', 6, 6, 'monster/greenaxe/leftleg.svg');
 greenaxe_leftleg.add_animation('walk', [
     {
         'transform': 'rotate(-1deg) scaleX(1.024) scaleY(1.005) translateX(-0.7%) translateY(-0.16%)',
@@ -142,7 +246,7 @@ greenaxe_leftleg.add_animation('walk', [
     'iterations': Infinity,
     'direction': 'alternate',
 });
-const greenaxe_torso = new SimpleTileFactory('surface', 3, 3, 'monster/greenaxe/torso.svg');
+const greenaxe_torso = new SimpleTileFactory('surface', 6, 6, 'monster/greenaxe/torso.svg');
 greenaxe_torso.add_animation('walk', [
     {
         'transform': 'rotate(1.3deg) scaleX(1.021) scaleY(1) translateX(0.61%) translateY(0.67%)',
@@ -167,7 +271,7 @@ greenaxe_torso.add_animation('walk', [
     'iterations': Infinity,
     'direction': 'alternate',
 });
-const greenaxe_head = new SimpleTileFactory('surface', 3, 3, 'monster/greenaxe/head.svg');
+const greenaxe_head = new SimpleTileFactory('surface', 6, 6, 'monster/greenaxe/head.svg');
 greenaxe_head.add_animation('walk', [
     {
         'transform': 'rotate(-0.8deg) scaleX(1.027) scaleY(0.993) translateX(0.44%) translateY(-0.35%)',
@@ -192,7 +296,7 @@ greenaxe_head.add_animation('walk', [
     'iterations': Infinity,
     'direction': 'alternate',
 });
-const greenaxe_rightarm = new SimpleTileFactory('surface', 3, 3, 'monster/greenaxe/rightarm.svg');
+const greenaxe_rightarm = new SimpleTileFactory('surface', 6, 6, 'monster/greenaxe/rightarm.svg');
 greenaxe_rightarm.add_animation('walk', [
     {
         'transform': 'rotate(1.1deg) scaleX(1) scaleY(1.009) translateX(0.12%) translateY(0.54%)',
@@ -217,7 +321,7 @@ greenaxe_rightarm.add_animation('walk', [
     'iterations': Infinity,
     'direction': 'alternate',
 });
-const greenaxe_leftarm = new SimpleTileFactory('surface', 3, 3, 'monster/greenaxe/leftarm.svg');
+const greenaxe_leftarm = new SimpleTileFactory('surface', 6, 6, 'monster/greenaxe/leftarm.svg');
 greenaxe_leftarm.add_animation('walk', [
     {
         'transform': 'rotate(0deg) scaleX(1) scaleY(1) translateX(0%) translateY(0%)',

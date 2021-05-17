@@ -1,8 +1,6 @@
 export class Layer {
-    set_level(level) {
+    constructor(level, tileset) {
         this.level = level;
-    }
-    set_tileset(tileset) {
         this.tileset = tileset;
     }
     add_tile(tile_factory, y) {
