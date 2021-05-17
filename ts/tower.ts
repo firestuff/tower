@@ -114,7 +114,7 @@ export function main() {
     tower.play('fire');
     const target_relative_x = rand(-40, 40);
     const target_relative_y = rand(-20, 40);
-    const factory = new ProjectileTileFactory(tiles.FIREBALL, target_relative_x, target_relative_y, 5, 1.5, 5);
+    const factory = new ProjectileTileFactory(tiles.FIREBALL, target_relative_x, target_relative_y, 5, 3, 10);
     grid.add_tile(factory, 62, 54);
     setTimeout(() => {
       grid.add_tile(tiles.FIREBALL_IMPACT, 62 + target_relative_x, 54 + target_relative_y);

@@ -143,6 +143,16 @@ export const RIVER_TR = new SimpleTileFactory('water', 12, 12, '{tileset}/river-
 export const RIVER_TL = new SimpleTileFactory('water', 12, 12, '{tileset}/river-tl.svg');
 
 export const BRIDGE_LR = new SimpleTileFactory('bridge', 12, 8, '{tileset}/bridge-lr.svg');
+BRIDGE_LR.add_mask('walkable', Mask.from_string(`
+............
+...XXXXXX...
+XXXXXXXXXXXX
+XXXXXXXXXXXX
+XXXXXXXXXXXX
+XXX......XXX
+............
+............
+`));
 
 const tower_fireball1_back = new SimpleTileFactory('surface', 8, 8, 'tower/fireball1-back.svg');
 const tower_fireball1 = new SimpleTileFactory('surface', 8, 8, 'tower/fireball1.svg');
