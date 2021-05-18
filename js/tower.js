@@ -71,25 +71,30 @@ export function main() {
     grid.add_tile(tiles.BRIDGE_LR, 92, 52);
     grid.add_tile(tiles.BRIDGE_LR, 92, 36);
     grid.add_tile(tiles.BRIDGE_LR, 92, 20);
+    function add_debug_tile(x, y, color) {
+        const div = document.createElement('div');
+        real.appendChild(div);
+        div.style.gridColumnStart = `${x + 1}`;
+        div.style.gridRowStart = `${y + 1}`;
+        div.style.gridColumnEnd = 'span 1';
+        div.style.gridRowEnd = 'span 1';
+        div.style.backgroundColor = color;
+        div.style.opacity = '0.3';
+        div.style.zIndex = '1000000';
+    }
     {
         const m = grid.masks.get('walkable').mask;
         for (let x = 0; x < m.length; x++) {
             for (let y = 0; y < m[x].length; y++) {
-                if (!m[x][y]) {
+                if (m[x][y]) {
+                    add_debug_tile(x, y, 'orange');
                     continue;
                 }
-                const div = document.createElement('div');
-                real.appendChild(div);
-                div.style.gridColumnStart = `${x + 1}`;
-                div.style.gridRowStart = `${y + 1}`;
-                div.style.gridColumnEnd = 'span 1';
-                div.style.gridRowEnd = 'span 1';
-                div.style.backgroundColor = 'orange';
-                div.style.opacity = '0.3';
-                div.style.zIndex = '1000000';
             }
         }
     }
+    add_debug_tile(118, 23, 'blue');
+    add_debug_tile(44, 94, 'red');
     function rand(min, max) {
         return Math.round(Math.random() * (max - min) + min);
     }
