@@ -71,30 +71,6 @@ export function main() {
     grid.add_tile(tiles.BRIDGE_LR, 92, 52);
     grid.add_tile(tiles.BRIDGE_LR, 92, 36);
     grid.add_tile(tiles.BRIDGE_LR, 92, 20);
-    function add_debug_tile(x, y, color) {
-        const div = document.createElement('div');
-        real.appendChild(div);
-        div.style.gridColumnStart = `${x + 1}`;
-        div.style.gridRowStart = `${y + 1}`;
-        div.style.gridColumnEnd = 'span 1';
-        div.style.gridRowEnd = 'span 1';
-        div.style.backgroundColor = color;
-        div.style.opacity = '0.3';
-        div.style.zIndex = '1000000';
-    }
-    {
-        const m = grid.masks.get('walkable').mask;
-        for (let x = 0; x < m.length; x++) {
-            for (let y = 0; y < m[x].length; y++) {
-                if (m[x][y]) {
-                    add_debug_tile(x, y, 'orange');
-                    continue;
-                }
-            }
-        }
-    }
-    add_debug_tile(118, 23, 'blue');
-    add_debug_tile(44, 94, 'red');
     function rand(min, max) {
         return Math.round(Math.random() * (max - min) + min);
     }
@@ -109,15 +85,30 @@ export function main() {
             grid.add_tile(tiles.FIREBALL_IMPACT, 62 + target_relative_x, 54 + target_relative_y);
         }, factory.duration);
     }, 3250);
-    const greenaxe = grid.add_tile(tiles.GREENAXE, 60, 32);
+    const path = grid.get_path('walkable', [118, 23], [44, 94]);
+    const greenaxe = grid.add_tile(tiles.GREENAXE, 115, 18);
     greenaxe.play('walk');
     greenaxe.elem.style.transitionProperty = 'top,left';
-    greenaxe.elem.style.transitionDuration = '25s';
+    greenaxe.elem.style.transitionDuration = '0.5s';
     greenaxe.elem.style.transitionTimingFunction = 'linear';
     greenaxe.elem.style.top = '0';
     greenaxe.elem.style.left = '0';
-    greenaxe.elem.style.transform = 'scaleX(-1)';
-    setTimeout(() => greenaxe.elem.style.left = '-500%', 100);
+    let prev = [118, 23];
+    setInterval(() => {
+        const next = path.shift();
+        if (!next) {
+            return;
+        }
+        if (next[0] - prev[0] < 0) {
+            greenaxe.elem.style.transform = 'scaleX(-1)';
+        }
+        else if (next[0] - prev[0] > 0) {
+            greenaxe.elem.style.transform = 'scaleX(1)';
+        }
+        prev = next;
+        greenaxe.elem.style.left = `${(next[0] - 118) / 6 * 100}%`;
+        greenaxe.elem.style.top = `${(next[1] - 23) / 6 * 100}%`;
+    }, 500);
 }
 ;
 main();
